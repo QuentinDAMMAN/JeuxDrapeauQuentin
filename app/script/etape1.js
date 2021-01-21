@@ -1,6 +1,6 @@
 "use strict"
 
-$(function () {
+$(function() {
 
     // on récupère les 3 div par leur id
     var $pays = $('#pays');
@@ -11,7 +11,6 @@ $(function () {
 
 
     // ****************** étape 1********************************
-    var level1;
 
     // on met France dans la div prévu
     $pays.text("France");
@@ -92,6 +91,11 @@ $(function () {
 
         if ($testFrance) {
             alert("ok !");
+
+            $.getScript("etape2.js", function(){
+                alert("ok !");
+            });
+            
         } else {
             alert("ko !");
         }
@@ -100,6 +104,9 @@ $(function () {
 
 
     // ****************** étape 2********************************F
+
+
+
 
 
 
