@@ -1,56 +1,41 @@
 body{
     display: flex;
     flex-direction: column;
-    align-content: space-between;
     align-items: center;
-    border: 3px rgb(116, 159, 223) solid;  
+    border: 2px rgb(116, 159, 223) solid;  
+
+    height: 100%;
+    width: 100%;
 
 
 
 
 }
 
-#pays{
-    display: flex;
-    background-color: rgb(78, 86, 245);
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    justify-self: normal;
-    width: 30%;
 
 
-}
-
-#drapeau{
+#drapeau-france, #drapeau-belge{
     display: flex;
     flex-direction: row;
-    align-content: center;
-    align-items: center;
-    width: 55%;
-
-}
-
-#drapeau>div {
-
-    justify-content: center;
-    width: 100%;
-    border: thick double #0f15185e;
-
 }
 
 
 #valider {
 
     display: flex;
-    justify-content: center;
-    border: 1px black solid; 
-    width: 20%;
+    border: 1px rgb(11, 12, 12) solid;  
+
 
 
 
 }
 
+
+.drap {
+
+    border: thick double #0f15185e;
+
+}
 
 
 
