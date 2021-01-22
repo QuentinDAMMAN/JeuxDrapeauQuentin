@@ -1,12 +1,7 @@
 //mode use strict pour éviter des données non déclaré ni initialisé
 "use strict"
-/*
- *  Débug
-    france();
-    belgique();
-    allemagne();
- *  Fin Débug
- */
+
+// ************************* Début Déclaration des var utiles ***************
 
 var $valider = $('#valider');
 var $lvl = $("#lvl");
@@ -48,19 +43,26 @@ $drapeauBelge.children().css("background-color", "black").css("color", "black");
 $drapeauAllemagne.children().css("background-color", "black").css("color", "black");
 $drapeauHollande.children().css("background-color", "red").css("color", "red");
 
+// ************************* Fin Déclaration des var utiles ***************
 
 
-
-
-
-
-
+//function onLoad
 $(function () {
     france();
-
+    /*
+     *  Débug
+        belgique();
+        allemagne();
+     *  Fin Débug
+     */
 });
 
+
+// ************************* Début France ***************
 function france() {
+
+    //on affiche pas la div valider au démarrageF
+    $valider.css("display", "none");
 
     //affichage au démarage des textes "pays"
     $france.css("display", "flex");
@@ -79,98 +81,49 @@ function france() {
     var $blanc = $drapeauFrance.children(':nth-child(2)');
     var $rouge = $drapeauFrance.children(':nth-child(3)');
 
-    // on applique un event click au premier 
-    $bleu.click(function () {
+    // on applique un event clic au enfant div ppour changer les couleurs
+    $drapeauFrance.children().click(function () {
 
-        var $couleur = $bleu.css("background-color");
+        var $elem = $(this).css("background-color");
 
-        switch ($couleur) {
+        switch ($elem) {
             case $blue:
-                $bleu.css("background-color", "white").css("color", "white");
+                $(this).css("background-color", "white").css("color", "white");
                 break;
             case $white:
-                $bleu.css("background-color", "red").css("color", "red");
+                $(this).css("background-color", "red").css("color", "red");
                 break;
             case $red:
-                $bleu.css("background-color", "blue").css("color", "blue");
+                $(this).css("background-color", "blue").css("color", "blue");
                 break;
             default:
                 break;
         };
     });
 
-    // on applique un event click au deuxième 
-    $blanc.click(function () {
-
-        var $couleur = $blanc.css("background-color");
-
-        switch ($couleur) {
-            case $blue:
-                $blanc.css("background-color", "white").css("color", "white");
-                break;
-            case $white:
-                $blanc.css("background-color", "red").css("color", "red");
-                break;
-            case $red:
-                $blanc.css("background-color", "blue").css("color", "blue");
-                break;
-            default:
-                break;
-        };
-    });
-
-    // on applique un event click au troisième 
-    $rouge.click(function () {
-
-        var $couleur = $rouge.css("background-color");
-
-        switch ($couleur) {
-            case $blue:
-                $rouge.css("background-color", "white").css("color", "white");
-                break;
-            case $white:
-                $rouge.css("background-color", "red").css("color", "red");
-                break;
-            case $red:
-                $rouge.css("background-color", "blue").css("color", "blue");
-                break;
-            default:
-                break;
-        };
-    });
-
-    /*
-    * FIN DRAPEAU FRANCE
-     */
-
-    // ****************** étape 2********************************
-    // on applique un event au click de la div valider
-
-
-
-
-    
-
-    $valider.click(function () {
+    //test des couleurs à l'issue du click
+    $drapeauFrance.children().click(function () {
 
         //formule de test
         var $testFrance = ($bleu.css("background-color") == $blue) && ($blanc.css("background-color") == $white) && ($rouge.css("background-color") == $red);
 
         if ($testFrance) {
-            //alert("ok !");
-            belgique();
-        } else {
-            //alert("ko !");
+            $valider.css("display", "flex");
         }
     });
 
-    
+    //click sur la div valider
+    $valider.click(function () {
+        belgique();
+    });
 }
+// ************************* Fin France ***************
 
 
-
-
+// ************************* Début Belgique ***************
 function belgique() {
+    //on affiche pas la div valider au démarrageF
+    $valider.css("display", "none");
 
     //affichage au démarage des textes "pays"
     $france.css("display", "none");
@@ -184,10 +137,6 @@ function belgique() {
     $drapeauAllemagne.css("display", "none");
     $drapeauHollande.css("display", "none");
 
-    // ****************** étape 3********************************
-    /*
-    * DEBUT DRAPEAU BELGIQUE
-     */
 
     // on récupère les div enfant
     var $noir = $drapeauBelge.children(':nth-child(1)');
@@ -195,88 +144,50 @@ function belgique() {
     var $rouge = $drapeauBelge.children(':nth-child(3)');
 
 
-    // on applique un event click au premier 
-    $noir.click(function () {
+    // on applique un event clic au enfant div ppour changer les couleurs
+    $drapeauBelge.children().click(function () {
 
-        var $couleur = $noir.css("background-color");
+        var $elem = $(this).css("background-color");
 
-        switch ($couleur) {
+        switch ($elem) {
             case $black:
-                $noir.css("background-color", "yellow").css("color", "yellow");
+                $(this).css("background-color", "yellow").css("color", "yellow");
                 break;
             case $yellow:
-                $noir.css("background-color", "red").css("color", "red");
+                $(this).css("background-color", "red").css("color", "red");
                 break;
             case $red:
-                $noir.css("background-color", "black").css("color", "black");
+                $(this).css("background-color", "black").css("color", "black");
                 break;
             default:
                 break;
         };
     });
 
-    // on applique un event click au deuxième 
-    $jaune.click(function () {
-
-        var $couleur = $jaune.css("background-color");
-
-        switch ($couleur) {
-            case $black:
-                $jaune.css("background-color", "yellow").css("color", "yellow");
-                break;
-            case $yellow:
-                $jaune.css("background-color", "red").css("color", "red");
-                break;
-            case $red:
-                $jaune.css("background-color", "black").css("color", "black");
-                break;
-            default:
-                break;
-        };
-    });
-
-    // on applique un event click au troisième 
-    $rouge.click(function () {
-
-        var $couleur = $rouge.css("background-color");
-
-        switch ($couleur) {
-            case $black:
-                $rouge.css("background-color", "yellow").css("color", "yellow");
-                break;
-            case $yellow:
-                $rouge.css("background-color", "red").css("color", "red");
-                break;
-            case $red:
-                $rouge.css("background-color", "black").css("color", "black");
-                break;
-            default:
-                break;
-        };
-    });
-
-    /*
-    * FIN DRAPEAU BELGIQUE
-     */
-
-    // on applique un event au click de la div valider
-    $valider.click(function () {
+    //test des couleurs à l'issue du click
+    $drapeauBelge.children().click(function () {
 
         //formule de test
         var $testBelgique = ($noir.css("background-color") == ($black)) && ($jaune.css("background-color") == ($yellow)) && ($rouge.css("background-color") == ($red));
 
         if ($testBelgique) {
-            //alert("ok !");
-            allemagne();
-        } else {
-            //alert("ko !");
+            $valider.css("display", "flex");
         }
     });
+
+    //click sur la div valider
+    $valider.click(function () {
+        allemagne();
+    });
 }
+// ************************* Fin Belgique ***************
 
 
-
+// ************************* Début Allemagne ***************
 function allemagne() {
+
+    //on affiche pas la div valider au démarrageF
+    $valider.css("display", "none");
 
     //affichage au démarage des textes "pays"
     $france.css("display", "none");
@@ -290,102 +201,55 @@ function allemagne() {
     $drapeauAllemagne.css("display", "flex");
     $drapeauHollande.css("display", "none");
 
-    // ****************** étape 5********************************
-    /*
-    * DEBUT DRAPEAU BELGIQUE
-     */
-
     // on récupère les div enfant
     var $noir = $drapeauAllemagne.children(':nth-child(1)');
     var $rouge = $drapeauAllemagne.children(':nth-child(2)');
     var $jaune = $drapeauAllemagne.children(':nth-child(3)');
 
-    // on applique un event click au premier 
-    $noir.click(function () {
+    // on applique un event clic au enfant div ppour changer les couleurs
+    $drapeauAllemagne.children().click(function () {
 
-        var $couleur = $noir.css("background-color");
+        var $elem = $(this).css("background-color");
 
-        switch ($couleur) {
+        switch ($elem) {
             case $black:
-                $noir.css("background-color", "red").css("color", "red");
+                $(this).css("background-color", "red").css("color", "red");
                 break;
             case $red:
-                $noir.css("background-color", "yellow").css("color", "yellow");
+                $(this).css("background-color", "yellow").css("color", "yellow");
                 break;
             case $yellow:
-                $noir.css("background-color", "black").css("color", "black");
+                $(this).css("background-color", "black").css("color", "black");
                 break;
             default:
                 break;
         };
     });
 
-    // on applique un event click au deuxième 
-    $rouge.click(function () {
-
-        var $couleur = $rouge.css("background-color");
-
-        switch ($couleur) {
-            case $black:
-                $rouge.css("background-color", "red").css("color", "red");
-                break;
-            case $red:
-                $rouge.css("background-color", "yellow").css("color", "yellow");
-                break;
-            case $yellow:
-                $rouge.css("background-color", "black").css("color", "black");
-                break;
-            default:
-                break;
-        };
-    });
-
-    // on applique un event click au troisième 
-    $jaune.click(function () {
-
-        var $couleur = $jaune.css("background-color");
-
-        switch ($couleur) {
-            case $black:
-                $jaune.css("background-color", "red").css("color", "red");
-                break;
-            case $red:
-                $jaune.css("background-color", "yellow").css("color", "yellow");
-                break;
-            case $yellow:
-                $jaune.css("background-color", "black").css("color", "black");
-                break;
-            default:
-                break;
-        };
-    });
-
-
-
-    /*
-    * FIN DRAPEAU BELGIQUE
-     */
-
-    // on applique un event au click de la div valider
-    $valider.click(function () {
+    //test des couleurs à l'issue du click
+    $drapeauAllemagne.children().click(function () {
 
         //formule de test
         var $testAllemagne = ($noir.css("background-color") == ($black)) && ($rouge.css("background-color") == ($red)) && ($jaune.css("background-color") == ($yellow));
 
         if ($testAllemagne) {
-            //alert("ok !");
-            hollande();
-
-        } else {
-            //alert("ko !");
+            $valider.css("display", "flex");
         }
     });
 
+    //click sur la div valider
+    $valider.click(function () {
+        hollande();
+    });
 }
+// ************************* Fin Allemagne ***************
 
 
-
+// ************************* Début Holande ***************
 function hollande() {
+
+    //on affiche pas la div valider au démarrageF
+    $valider.css("display", "none");
 
     //affichage au démarage des textes "pays"
     $france.css("display", "none");
@@ -399,94 +263,45 @@ function hollande() {
     $drapeauAllemagne.css("display", "none");
     $drapeauHollande.css("display", "flex");
 
-    // ****************** étape 5********************************
-    /*
-    * DEBUT DRAPEAU BELGIQUE
-     */
-
     // on récupère les div enfant
     var $rouge = $drapeauHollande.children(':nth-child(1)');
     var $blanc = $drapeauHollande.children(':nth-child(2)');
     var $bleu = $drapeauHollande.children(':nth-child(3)');
 
-    // on applique un event click au premier 
-    $rouge.click(function () {
+    // on applique un event clic au enfant div ppour changer les couleurs
+    $drapeauHollande.children().click(function () {
 
-        var $couleur = $rouge.css("background-color");
+        var $elem = $(this).css("background-color");
 
-        switch ($couleur) {
+        switch ($elem) {
             case $red:
-                $rouge.css("background-color", "white").css("color", "white");
+                $(this).css("background-color", "white").css("color", "white");
                 break;
             case $white:
-                $rouge.css("background-color", "blue").css("color", "blue");
+                $(this).css("background-color", "blue").css("color", "blue");
                 break;
             case $blue:
-                $rouge.css("background-color", "red").css("color", "red");
+                $(this).css("background-color", "red").css("color", "red");
                 break;
             default:
                 break;
         };
     });
 
-    // on applique un event click au deuxième 
-    $blanc.click(function () {
-
-        var $couleur = $blanc.css("background-color");
-
-        switch ($couleur) {
-            case $red:
-                $blanc.css("background-color", "white").css("color", "white");
-                break;
-            case $white:
-                $blanc.css("background-color", "blue").css("color", "blue");
-                break;
-            case $blue:
-                $blanc.css("background-color", "red").css("color", "red");
-                break;
-            default:
-                break;
-        };
-    });
-
-    // on applique un event click au troisième 
-    $bleu.click(function () {
-
-        var $couleur = $bleu.css("background-color");
-
-        switch ($couleur) {
-            case $red:
-                $bleu.css("background-color", "white").css("color", "white");
-                break;
-            case $white:
-                $bleu.css("background-color", "blue").css("color", "blue");
-                break;
-            case $blue:
-                $bleu.css("background-color", "red").css("color", "red");
-                break;
-            default:
-                break;
-        };
-    });
-
-
-
-    /*
-    * FIN DRAPEAU BELGIQUE
-     */
-
-    // on applique un event au click de la div valider
-    $valider.click(function () {
+    //test des couleurs à l'issue du click
+    $drapeauHollande.children().click(function () {
 
         //formule de test
         var $testHollande = ($rouge.css("background-color") == ($red)) && ($blanc.css("background-color") == ($white)) && ($bleu.css("background-color") == ($blue));
 
         if ($testHollande) {
-            alert("ok !");
-
-        } else {
-            alert("ko !");
+            $valider.css("display", "flex");
         }
     });
 
+    //click sur la div valider
+    $valider.click(function () {
+
+    }); 
 }
+// ************************* Fin Hollande ***************
