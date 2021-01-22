@@ -9,6 +9,9 @@
  */
 
 var $valider = $('#valider');
+var $lvl = $("#lvl");
+var $count = $("#count");
+var $time = $("#time");
 
 //déclaration couleur
 var $blue = 'rgb(0, 0, 255)';
@@ -30,6 +33,9 @@ var $drapeauAllemagne = $('#drapeau-allemagne');
 var $drapeauHollande = $('#drapeau-hollande');
 
 //ajout de texte dans les div l'html
+$lvl.text("Lvl : 1");
+$time.text("00:00:00")
+$count.text("Click : 0")
 $valider.text("valider");
 $france.text("France");
 $belgique.text("Belgique");
@@ -42,29 +48,31 @@ $drapeauBelge.children().css("background-color", "black").css("color", "black");
 $drapeauAllemagne.children().css("background-color", "black").css("color", "black");
 $drapeauHollande.children().css("background-color", "red").css("color", "red");
 
-//affichage au démarage des textes "pays"
-$valider.css("display", "flex");
-$france.css("display", "none");
-$belgique.css("display", "none");
-$allemagne.css("display", "none");
-$hollande.css("display", "flex");
-$drapeauHollande.css("display", "none");
 
-//affichage au démarage des drapeaux
-$drapeauFrance.css("display", "none");
-$drapeauBelge.css("display", "none");
-$drapeauAllemagne.css("display", "none");
-$drapeauHollande.css("display", "none");
+
+
 
 
 
 
 $(function () {
-    hollande();
+    france();
 
 });
 
 function france() {
+
+    //affichage au démarage des textes "pays"
+    $france.css("display", "flex");
+    $belgique.css("display", "none");
+    $allemagne.css("display", "none");
+    $hollande.css("display", "none");
+
+    //affichage au démarage des drapeaux
+    $drapeauFrance.css("display", "flex");
+    $drapeauBelge.css("display", "none");
+    $drapeauAllemagne.css("display", "none");
+    $drapeauHollande.css("display", "none");
 
     // on récupère les div enfant
     var $bleu = $drapeauFrance.children(':nth-child(1)');
@@ -137,6 +145,12 @@ function france() {
 
     // ****************** étape 2********************************
     // on applique un event au click de la div valider
+
+
+
+
+    
+
     $valider.click(function () {
 
         //formule de test
@@ -149,6 +163,8 @@ function france() {
             //alert("ko !");
         }
     });
+
+    
 }
 
 
@@ -156,11 +172,17 @@ function france() {
 
 function belgique() {
 
+    //affichage au démarage des textes "pays"
     $france.css("display", "none");
-    $drapeauFrance.css("display", "none");
+    $belgique.css("display", "flex");
+    $allemagne.css("display", "none");
+    $hollande.css("display", "none");
 
-    $belgique.css("display", "block");
+    //affichage au démarage des drapeaux
+    $drapeauFrance.css("display", "none");
     $drapeauBelge.css("display", "flex");
+    $drapeauAllemagne.css("display", "none");
+    $drapeauHollande.css("display", "none");
 
     // ****************** étape 3********************************
     /*
@@ -256,14 +278,17 @@ function belgique() {
 
 function allemagne() {
 
+    //affichage au démarage des textes "pays"
     $france.css("display", "none");
-    $drapeauFrance.css("display", "none");
-
     $belgique.css("display", "none");
-    $drapeauBelge.css("display", "none");
-
     $allemagne.css("display", "flex");
+    $hollande.css("display", "none");
+
+    //affichage au démarage des drapeaux
+    $drapeauFrance.css("display", "none");
+    $drapeauBelge.css("display", "none");
     $drapeauAllemagne.css("display", "flex");
+    $drapeauHollande.css("display", "none");
 
     // ****************** étape 5********************************
     /*
@@ -362,16 +387,16 @@ function allemagne() {
 
 function hollande() {
 
+    //affichage au démarage des textes "pays"
     $france.css("display", "none");
-    $drapeauFrance.css("display", "none");
-
     $belgique.css("display", "none");
-    $drapeauBelge.css("display", "none");
-
     $allemagne.css("display", "none");
-    $drapeauAllemagne.css("display", "none");
-
     $hollande.css("display", "flex");
+
+    //affichage au démarage des drapeaux
+    $drapeauFrance.css("display", "none");
+    $drapeauBelge.css("display", "none");
+    $drapeauAllemagne.css("display", "none");
     $drapeauHollande.css("display", "flex");
 
     // ****************** étape 5********************************
