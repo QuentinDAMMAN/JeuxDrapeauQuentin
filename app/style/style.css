@@ -3,37 +3,57 @@ body{
     flex-direction: column;
     align-items: center;
     border: 2px rgb(116, 159, 223) solid;  
+}
 
-    height: 100%;
-    width: 100%;
-
-
-
-
+.pays{
+    margin-top:4%;
+    margin-bottom:4%;
 }
 
 
-
-#drapeau-france, #drapeau-belge{
+#drapeau-france, #drapeau-belgique{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
 }
+
+
+#drapeau-france :nth-child(1) , #drapeau-france :nth-child(2), #drapeau-france :nth-child(3), #drapeau-belgique :nth-child(1) , #drapeau-belgique :nth-child(2), #drapeau-belgique :nth-child(3){
+    width: 11%;
+    border: #0f15185e double 1px;
+}
+
+
+#drapeau-allemagne, #drapeau-hollande{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:auto;
+    padding: auto;
+    height: 100%;
+    width: 100%;
+}
+
+#drapeau-allemagne :nth-child(1) , #drapeau-allemagne :nth-child(2), #drapeau-allemagne :nth-child(3), #drapeau-hollande :nth-child(1) , #drapeau-hollande :nth-child(2), #drapeau-hollande :nth-child(3){
+    width: 22%;
+    border: #0f15185e double 1px;
+}
+
+
+
+
+
+
 
 
 #valider {
-
+    height: 100%;
+    width: 100%;
+    margin-top:35%;
     display: flex;
     border: 1px rgb(11, 12, 12) solid;  
-
-
-
-
-}
-
-
-.drap {
-
-    border: thick double #0f15185e;
 
 }
 
