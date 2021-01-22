@@ -1,13 +1,33 @@
 //mode use strict pour éviter des données non déclaré ni initialisé
 "use strict"
 
-// ************************* Début Déclaration des var utiles ***************
+//function onLoad
+$(function () {
+    france();
+    /*
+     *
+     Débug
+     *
+     france();
+     belgique();
+     allemagne();
+     hollande();
+     *
+     */
+});
 
+// ************************* Début Déclaration des var utiles ***************
 var $valider = $('#valider');
 var $lvl = $("#lvl");
 var $count = $("#count");
-var $time = $("#time");
+var $chrono = $("#chrono");
 var nombreClick = 0;
+var milisecondes = 0;
+var secondes = 0;
+var minutes = 0;
+var on = false;
+var reset = false;
+var timerID;
 
 //déclaration couleur
 var $blue = 'rgb(0, 0, 255)';
@@ -29,36 +49,38 @@ var $drapeauAllemagne = $('#drapeau-allemagne');
 var $drapeauHollande = $('#drapeau-hollande');
 
 //ajout de texte dans les div l'html
-$time.text("00:00:00")
+//$chrono.text("00:00:00")
 $valider.text("valider");
-
-//coloration de base des drapeaux
-$drapeauFrance.children().css("background-color", "blue").css("color", "blue");
-$drapeauBelge.children().css("background-color", "black").css("color", "black");
-$drapeauAllemagne.children().css("background-color", "black").css("color", "black");
-$drapeauHollande.children().css("background-color", "red").css("color", "red");
-
 // ************************* Fin Déclaration des var utiles ***************
 
 
-//function onLoad
-$(function () {
-    france();
-    /*
-     *  Débug
-     *
-     */ 
-    //belgique();
-    //allemagne();
-    //hollande();
-});
+
+function fin() {
+    console.log("fin de partie");
+    console.log("chrono : ", $("#chrono").text());
+    console.log("click : ", nombreClick);
+    $hollande.css("display", "none");
+    resetChrono();
+    secondes = 0;
+    minutes = 0;
+    nombreClick = 0;
+    $chrono.html("00 : 00 : 00");
+    $count.html("Click : 0");
+    $lvl.html("lvl : ");
+}
 
 
 // ************************* Début France ***************
 function france() {
 
-    $france.text("France");
+    //on lance le chrono 
+    startChrono();
 
+    //on ititalise le texte dans les div pays et drapeau
+    $france.text("France");
+    $drapeauFrance.children().css("background-color", "blue")
+
+    //on modifie le texte de la div compteur
     $count.text("Click : " + nombreClick);
 
     //lvl1
@@ -84,7 +106,7 @@ function france() {
     var $blanc = $drapeauFrance.children(':nth-child(2)');
     var $rouge = $drapeauFrance.children(':nth-child(3)');
 
-    // on applique un event clic au enfant div ppour changer les couleurs
+    // on applique un event clic au enfant div pour changer les couleurs
     $drapeauFrance.children().click(function () {
 
         //on incrémente le compteurs de clicks
@@ -133,7 +155,9 @@ function france() {
 // ************************* Début Belgique ***************
 function belgique() {
 
+    //on ititalise le texte dans les div pays et drapeau
     $belgique.text("Belgique");
+    $drapeauBelge.children().css("background-color", "black").css("color", "black");
 
     //lvl2
     $lvl.text("Lvl : 2");
@@ -155,7 +179,7 @@ function belgique() {
     var $rouge = $drapeauBelge.children(':nth-child(3)');
 
 
-    // on applique un event clic au enfant div ppour changer les couleurs
+    // on applique un event clic au enfant div pour changer les couleurs
     $drapeauBelge.children().click(function () {
 
         //on incrémente le compteurs de clicks
@@ -204,7 +228,9 @@ function belgique() {
 // ************************* Début Allemagne ***************
 function allemagne() {
 
+    //on ititalise le texte dans les div pays et drapeau
     $allemagne.text("Allemagne");
+    $drapeauAllemagne.children().css("background-color", "black").css("color", "black");
 
     //lvl3
     $lvl.text("Lvl : 3");
@@ -223,7 +249,7 @@ function allemagne() {
     var $rouge = $drapeauAllemagne.children(':nth-child(2)');
     var $jaune = $drapeauAllemagne.children(':nth-child(3)');
 
-    // on applique un event clic au enfant div ppour changer les couleurs
+    // on applique un event clic au enfant div pour changer les couleurs
     $drapeauAllemagne.children().click(function () {
 
         //on incrémente le compteurs de clicks
@@ -272,7 +298,9 @@ function allemagne() {
 // ************************* Début Holande ***************
 function hollande() {
 
+    //on ititalise le texte dans les div pays et drapeau
     $hollande.text("Pays-bas");
+    $drapeauHollande.children().css("background-color", "red").css("color", "red");
 
     //lvl4
     $lvl.text("Lvl : 4");
@@ -291,7 +319,7 @@ function hollande() {
     var $blanc = $drapeauHollande.children(':nth-child(2)');
     var $bleu = $drapeauHollande.children(':nth-child(3)');
 
-    // on applique un event clic au enfant div ppour changer les couleurs
+    // on applique un event clic au enfant div pour changer les couleurs
     $drapeauHollande.children().click(function () {
 
         //on incrémente le compteurs de clicks
@@ -329,13 +357,62 @@ function hollande() {
 
     //click sur la div valider
     $valider.click(function () {
-
+        $hollande.css("display", "none"),
+        $drapeauHollande.css("display", "none");
+        fin();
     });
 }
 // ************************* Fin Hollande ***************
 
+
 // ************************* début Chrono ***************
+function chrono() {
 
+    milisecondes += 1;
 
+    if (milisecondes > 99) {
+        secondes += 1;
+        milisecondes = 0;
+    }
+
+    if (secondes > 59) {
+        minutes += 1;
+        secondes = 0;
+    }
+
+    if (minutes < 10 && secondes < 10) {
+        $chrono.html("0" + minutes + " : 0" + secondes + " : " + milisecondes);
+    }
+    else if (minutes < 10 && secondes >= 10) {
+        $chrono.html("0" + minutes + " : " + secondes + " : " + milisecondes);
+    }
+    else if (minutes >= 10 && secondes < 10) {
+        $chrono.html(+minutes + " : 0" + secondes + " : " + milisecondes);
+    }
+    else if (minutes >= 10 && secondes > 10) {
+        $chrono.html(+minutes + " : " + secondes) + " : " + milisecondes;
+    }
+}
+
+function startChrono() {
+    if (on === false) {
+        timerID = setInterval(chrono, 10);
+        on = true;
+        reset = false;
+    }
+}
+
+function stopChrono() {
+    if (on === true) {
+        on = false;
+        clearTimeout(timerID);
+    }
+}
+
+function resetChrono() {
+    if (reset === false) {
+        clearInterval(timerID);
+        reset = true;
+    }
+}
 // ************************* Fin Chrono ***************
-
