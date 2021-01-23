@@ -2,15 +2,12 @@
 "use strict"
 
 // ************************* Début Déclaration des var utiles ***************
-
-var $valider = $('#valider');
 var $lvl = $("#lvl");
 var $count = $("#count");
 var $chrono = $("#chrono");
 var $conteneur = $("#conteneur");
 var $body = $("body");
 var $header = $("header");
-var $footer = $("footer");
 var $welcome = $("#welcome");
 var $game = $("#game");
 var $rule = $("#rule");
@@ -27,6 +24,7 @@ var reset = false;
 var timerID;
 var autoClickExemple = 0;
 var interval = 1000;
+var demandeAuto;
 
 //déclaration couleur
 var $blue = 'rgb(0, 0, 255)';
@@ -47,21 +45,10 @@ var $drapeauFrance = $('#drapeau-france');
 var $drapeauBelge = $('#drapeau-belgique');
 var $drapeauAllemagne = $('#drapeau-allemagne');
 var $drapeauHollande = $('#drapeau-hollande');
-
-//exemple demo automatique
-
 // ************************* Fin Déclaration des var utiles ***************
-
-$header.css("display", "none");
-$conteneur.css("display", "none");
-$footer.css("display", "none");
-$welcome.css("display", "none");
-
-var demandeAuto;
 
 //function onLoad
 $(function () {
-
     acceuil();
     /*
      *
@@ -80,10 +67,6 @@ function france() {
     $header.css("display", "flex");
     $conteneur.css("display", "flex");
     $footer.css("display", "flex");
-
-
-    //on affiche pas la div valider au démarrage
-    $valider.css("display", "none");
 
     //on affiche le compteur de click, lvl, chrono
     $count.css("display", "flex");
@@ -116,13 +99,13 @@ function france() {
 
         switch ($elem) {
             case $blue:
-                $(this).css("background-color", "white").css("color", "white");
+                $(this).css("background-color", "white");
                 break;
             case $white:
-                $(this).css("background-color", "red").css("color", "red");
+                $(this).css("background-color", "red");
                 break;
             case $red:
-                $(this).css("background-color", "blue").css("color", "blue");
+                $(this).css("background-color", "blue");
                 break;
             default:
                 break;
@@ -136,33 +119,23 @@ function france() {
         var $testFrance = ($bleu.css("background-color") == $blue) && ($blanc.css("background-color") == $white) && ($rouge.css("background-color") == $red);
 
         if ($testFrance) {
-            $valider.css("display", "flex");
+            //$valider.css("display", "flex");
+            $france.css("display", "none");
+            $drapeauFrance.css("display", "none");
+            belgique();
         }
-    });
-
-    //click sur la div valider
-    $valider.click(function () {
-        $france.css("display", "none");
-        $drapeauFrance.css("display", "none");
-        belgique();
     });
 }
 // ************************* Fin France ***************
 
-
 // ************************* Début Belgique ***************
 function belgique() {
-
 
     //lvl2
     $lvl.text("Lvl : 2");
 
-    //on affiche pas la div valider au démarrage
-    $valider.css("display", "none");
-
     //affichage au démarage des textes "pays"
     $belgique.css("display", "flex");
-
 
     //affichage au démarage des drapeaux
     $drapeauBelge.css("display", "flex");
@@ -171,7 +144,6 @@ function belgique() {
     var $noir = $drapeauBelge.children(':nth-child(1)');
     var $jaune = $drapeauBelge.children(':nth-child(2)');
     var $rouge = $drapeauBelge.children(':nth-child(3)');
-
 
     // on applique un event clic au enfant div pour changer les couleurs
     $drapeauBelge.children().click(function () {
@@ -185,13 +157,13 @@ function belgique() {
 
         switch ($elem) {
             case $black:
-                $(this).css("background-color", "yellow").css("color", "yellow");
+                $(this).css("background-color", "yellow");
                 break;
             case $yellow:
-                $(this).css("background-color", "red").css("color", "red");
+                $(this).css("background-color", "red");
                 break;
             case $red:
-                $(this).css("background-color", "black").css("color", "black");
+                $(this).css("background-color", "black");
                 break;
             default:
                 break;
@@ -205,29 +177,19 @@ function belgique() {
         var $testBelgique = ($noir.css("background-color") == ($black)) && ($jaune.css("background-color") == ($yellow)) && ($rouge.css("background-color") == ($red));
 
         if ($testBelgique) {
-            $valider.css("display", "flex");
+            $belgique.css("display", "none");
+            $drapeauBelge.css("display", "none");
+            allemagne();
         }
-    });
-
-    //click sur la div valider
-    $valider.click(function () {
-        $belgique.css("display", "none");
-        $drapeauBelge.css("display", "none");
-        allemagne();
     });
 }
 // ************************* Fin Belgique ***************
 
-
 // ************************* Début Allemagne ***************
 function allemagne() {
 
-
     //lvl3
     $lvl.text("Lvl : 3");
-
-    //on affiche pas la div valider au démarrageF
-    $valider.css("display", "none");
 
     //affichage au démarage des textes "pays"
     $allemagne.css("display", "flex");
@@ -252,13 +214,13 @@ function allemagne() {
 
         switch ($elem) {
             case $black:
-                $(this).css("background-color", "red").css("color", "red");
+                $(this).css("background-color", "red");
                 break;
             case $red:
-                $(this).css("background-color", "yellow").css("color", "yellow");
+                $(this).css("background-color", "yellow");
                 break;
             case $yellow:
-                $(this).css("background-color", "black").css("color", "black");
+                $(this).css("background-color", "black");
                 break;
             default:
                 break;
@@ -272,30 +234,19 @@ function allemagne() {
         var $testAllemagne = ($noir.css("background-color") == ($black)) && ($rouge.css("background-color") == ($red)) && ($jaune.css("background-color") == ($yellow));
 
         if ($testAllemagne) {
-            $valider.css("display", "flex");
+            $allemagne.css("display", "none");
+            $drapeauAllemagne.css("display", "none");
+            hollande();
         }
-    });
-
-    //click sur la div valider
-    $valider.click(function () {
-        $allemagne.css("display", "none");
-        $drapeauAllemagne.css("display", "none");
-        hollande();
     });
 }
 // ************************* Fin Allemagne ***************
 
-
 // ************************* Début Holande ***************
 function hollande() {
 
-
-
     //lvl4
     $lvl.text("Lvl : 4");
-
-    //on affiche pas la div valider au démarrageF
-    $valider.css("display", "none");
 
     //affichage au démarage des textes "pays"
     $hollande.css("display", "flex");
@@ -320,13 +271,13 @@ function hollande() {
 
         switch ($elem) {
             case $red:
-                $(this).css("background-color", "white").css("color", "white");
+                $(this).css("background-color", "white");
                 break;
             case $white:
-                $(this).css("background-color", "blue").css("color", "blue");
+                $(this).css("background-color", "blue");
                 break;
             case $blue:
-                $(this).css("background-color", "red").css("color", "red");
+                $(this).css("background-color", "red");
                 break;
             default:
                 break;
@@ -340,19 +291,13 @@ function hollande() {
         var $testHollande = ($rouge.css("background-color") == ($red)) && ($blanc.css("background-color") == ($white)) && ($bleu.css("background-color") == ($blue));
 
         if ($testHollande) {
-            $valider.css("display", "flex");
+            $hollande.css("display", "none"),
+                $drapeauHollande.css("display", "none");
+            fin();
         }
-    });
-
-    //click sur la div valider
-    $valider.click(function () {
-        $hollande.css("display", "none"),
-            $drapeauHollande.css("display", "none");
-        fin();
     });
 }
 // ************************* Fin Hollande ***************
-
 
 // ************************* début Chrono ***************
 function chrono() {
@@ -406,85 +351,7 @@ function resetChrono() {
 }
 // ************************* Fin Chrono ***************
 
-function acceuil() {
-
-    //on applique une couleur de fond pour le menu d'acceuil
-    $('body').css("background-color", "rgba(108, 171, 195, 0.883)");
-
-    $welcome.css("display", "flex");
-    $rule.css("display", "flex");
-    $exemple.css("display", "none");
-    $commencer.css("display", "none");
-
-    //affichage au démarage des textes "pays"
-    $france.css("display", "none");
-    $belgique.css("display", "none");
-    $allemagne.css("display", "none");
-    $hollande.css("display", "none");
-
-    //affichage au démarage des drapeaux
-    $drapeauFrance.css("display", "none");
-    $drapeauBelge.css("display", "none");
-    $drapeauAllemagne.css("display", "none");
-    $drapeauHollande.css("display", "none");
-
-    //on met le texte dans les div header
-    $chrono.html("00 : 00 : 00");
-    $count.html("Click : 0");
-    $lvl.html("lvl : 1");
-
-    //on ititalise le texte dans les div pays et drapeau
-    $france.html("France");
-    $drapeauFrance.children().css("background-color", "blue")
-    $belgique.html("Belgique");
-    $drapeauBelge.children().css("background-color", "black");
-    $allemagne.html("Allemagne");
-    $drapeauAllemagne.children().css("background-color", "black");
-    $hollande.html("Pays-bas");
-    $drapeauHollande.children().css("background-color", "red");
-
-
-
-    $boutonOK.click(function(){
-        demandeAuto = window.prompt("voulez-vous une demo auto (oui/non)", "oui");
-
-        if (demandeAuto == "oui") {
-            $rule.css("display", "none");
-            $exemple.css("display", "flex");
-            setInterval(changementCouleurAuto, 1000);
-        } else {
-            $rule.css("display", "none");
-            $exemple.css("display", "flex");
-
-            $drapeauExemple.children().css("background-color", "black");
-            $commencer.css("display", "flex");
-        }
-    });
-
-    $commencer.click(function(){
-
-
-
-        $welcome.css("display", "none");
-        france();
-    })
-
-
-
-}
-    
-
-
-
-
-
-    //france();
-
-
-
-
-
-
+//fonction démo auto
 function changementCouleurAuto() {
 
     var $zone1 = $drapeauExemple.children(':nth-child(1)');
@@ -552,16 +419,77 @@ function changementCouleurAuto() {
             autoClickExemple++;
             break;
         case 10:
-
             $commencer.css("display", "flex");
-
-
             break;
         default:
             break;
     }
 }
 
+function acceuil() {
+
+    $header.css("display", "none");
+    $conteneur.css("display", "none");
+    $welcome.css("display", "none");
+    
+    //on applique une couleur de fond pour le menu d'acceuil
+    $('body').css("background-color", "rgba(108, 171, 195, 0.883)");
+
+    $welcome.css("display", "flex");
+    $game.css("display", "flex");
+    $rule.css("display", "flex");
+    $exemple.css("display", "none");
+    $commencer.css("display", "none");
+
+    //on affiche pas de pays ni de drapeau
+    $france.css("display", "none");
+    $belgique.css("display", "none");
+    $allemagne.css("display", "none");
+    $hollande.css("display", "none");
+    $drapeauFrance.css("display", "none");
+    $drapeauBelge.css("display", "none");
+    $drapeauAllemagne.css("display", "none");
+    $drapeauHollande.css("display", "none");
+
+    //on met le texte dans les div header
+    $chrono.html("00 : 00 : 00");
+    $count.html("Click : 0");
+    $lvl.html("lvl : 1");
+
+    //on ititalise le texte dans les div pays et drapeau
+    $france.html("France");
+    $drapeauFrance.children().css("background-color", "blue")
+    $belgique.html("Belgique");
+    $drapeauBelge.children().css("background-color", "black");
+    $allemagne.html("Allemagne");
+    $drapeauAllemagne.children().css("background-color", "black");
+    $hollande.html("Pays-bas");
+    $drapeauHollande.children().css("background-color", "red");
+
+
+    //on ajoute un click
+    $boutonOK.click(function () {
+        demandeAuto = window.prompt("voulez-vous une demo auto (oui/non)", "oui");
+
+        if (demandeAuto == "oui") {
+            $rule.css("display", "none");
+            $exemple.css("display", "flex");
+
+            setInterval(changementCouleurAuto, 1000);
+        } else {
+            $rule.css("display", "none");
+            $exemple.css("display", "flex");
+
+            $drapeauExemple.children().css("background-color", "black");
+            $commencer.css("display", "flex");
+        }
+    });
+
+    $commencer.click(function () {
+        $welcome.css("display", "none");
+        france();
+    })
+}
 
 function fin() {
     console.log("fin de partie");

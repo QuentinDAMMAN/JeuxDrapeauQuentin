@@ -21,7 +21,6 @@ body,html {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 #rule{
@@ -47,9 +46,7 @@ body,html {
 }
 
 #rule2{
-
     display: flex;
-
     text-align: justify;
     width: 100%;
     height: 100%;
@@ -81,18 +78,18 @@ body,html {
     margin: 2%;
 }
 
-
 #commencer, #ok{
     display: flex;
-    border: 7px outset #196394;
+    border: 7px solid #196394;
     border-radius: 23px;
     width: 27%;
     height: 40%;
     margin: 2%;
 }
 
-
 #commencer:hover , #ok:hover{
+    border-right: 13px outset #196394;
+    border-bottom: 13px outset #196394;
     background-color: gold;
 }
 
@@ -101,8 +98,6 @@ p:hover{
     border-bottom: 5px outset #196394;
     border-radius: 8px;
     background-color: gold;
-
-
 }
 
 body{
@@ -110,8 +105,6 @@ body{
     flex-direction: column;
     align-items: center;
     margin: 0;
-    /* border: 5px outset rgba(28,110,164,0.41);
-    border-radius: 1px; */
 }
 
 header{
@@ -121,7 +114,7 @@ header{
     align-items: center;
     background-color: yellowgreen;
     justify-content: space-between;
-    height: 22%;
+    height: 25%;
     width: 100%;
 }
 
@@ -140,7 +133,7 @@ header{
     flex-direction: column;   
     align-content: center;
     justify-content: center;
-    height: 60%;
+    height: 75%;
     width: 100%;
 }
 
@@ -171,30 +164,6 @@ header{
     width: 100%;
 }
 
-footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 18%;
-    width: 100%;
-    background-color: tomato;
-
-}
-
-#valider {
-    display: flex;
-    border: 1px rgb(11, 12, 12) solid;  
-    border-radius: 2px;
-    background-color: rgb(185, 211, 221);
-    padding: 1%;
-    height: 50%;
-    width: 30%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-
-}
-
 #drapeau-france, #drapeau-belgique{
     display: flex;
     flex-direction: row;
@@ -207,7 +176,6 @@ footer{
     align-items: center;
     width: 50%;
     height: 100%;
-
 }
 
 .a {
@@ -217,7 +185,7 @@ footer{
 }
 
 .b {
-    height: 25%;
+    height: 20%;
     width: 100%;
     border: #0f15185e inset 4px;
 }
