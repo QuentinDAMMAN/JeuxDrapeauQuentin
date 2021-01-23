@@ -66,7 +66,6 @@ $(function () {
 function france() {
     $header.css("display", "flex");
     $conteneur.css("display", "flex");
-    $footer.css("display", "flex");
 
     //on affiche le compteur de click, lvl, chrono
     $count.css("display", "flex");
