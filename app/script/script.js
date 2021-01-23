@@ -38,6 +38,8 @@ var $france = $('#france');
 var $belgique = $('#belgique');
 var $allemagne = $('#allemagne');
 var $hollande = $('#hollande');
+var $pologne = $("#pologne");
+//var $tcheque = $("#tcheque");
 
 //déclaration drapeau pays
 var $drapeauExemple = $('#drapeau-exemple');
@@ -45,6 +47,8 @@ var $drapeauFrance = $('#drapeau-france');
 var $drapeauBelge = $('#drapeau-belgique');
 var $drapeauAllemagne = $('#drapeau-allemagne');
 var $drapeauHollande = $('#drapeau-hollande');
+var $drapeauPologne = $('#drapeau-pologne');
+//var $drapeauTcheque = $('#drapeau-tcheque');
 // ************************* Fin Déclaration des var utiles ***************
 
 //function onLoad
@@ -292,6 +296,60 @@ function hollande() {
         if ($testHollande) {
             $hollande.css("display", "none"),
                 $drapeauHollande.css("display", "none");
+            Pologne();
+        }
+    });
+}
+// ************************* Fin Hollande ***************
+
+// ************************* Début Pologne ***************
+function Pologne() {
+
+    //lvl5
+    $lvl.text("Lvl : 5");
+
+    //affichage au démarage des textes "pays"
+    $pologne.css("display", "flex");
+
+    //affichage au démarage des drapeaux
+    $drapeauPologne.css("display", "flex");
+
+    // on récupère les div enfant
+    var $blanc = $drapeauPologne.children(':nth-child(1)');
+    var $rouge = $drapeauPologne.children(':nth-child(2)');
+
+
+    // on applique un event clic au enfant div pour changer les couleurs
+    $drapeauPologne.children().click(function () {
+
+        //on incrémente le compteurs de clicks
+        nombreClick++;
+        //on modifie le texte de la div compteur
+        $count.text("Click : " + nombreClick);
+
+        var $elem = $(this).css("background-color");
+
+        switch ($elem) {
+            case $white:
+                $(this).css("background-color", "red");
+                break;
+            case $red:
+                $(this).css("background-color", "white");
+                break;
+            default:
+                break;
+        };
+    });
+
+    //test des couleurs à l'issue du click
+    $drapeauPologne.children().click(function () {
+
+        //formule de test
+        var $testPologne = ($blanc.css("background-color") == ($white)) && ($rouge.css("background-color") == ($red));
+
+        if ($testPologne) {
+            $pologne.css("display", "none"),
+                $drapeauPologne.css("display", "none");
             fin();
         }
     });
@@ -430,7 +488,7 @@ function acceuil() {
     $header.css("display", "none");
     $conteneur.css("display", "none");
     $welcome.css("display", "none");
-    
+
     //on applique une couleur de fond pour le menu d'acceuil
     $('body').css("background-color", "rgba(108, 171, 195, 0.883)");
 
@@ -445,10 +503,12 @@ function acceuil() {
     $belgique.css("display", "none");
     $allemagne.css("display", "none");
     $hollande.css("display", "none");
+    $pologne.css("display", "none");
     $drapeauFrance.css("display", "none");
     $drapeauBelge.css("display", "none");
     $drapeauAllemagne.css("display", "none");
     $drapeauHollande.css("display", "none");
+    $drapeauPologne.css("display", "none");
 
     //on met le texte dans les div header
     $chrono.html("00 : 00 : 00");
@@ -457,15 +517,16 @@ function acceuil() {
 
     //on ititalise le texte dans les div pays et drapeau
     $france.html("France");
-    $drapeauFrance.children().css("background-color", "blue")
     $belgique.html("Belgique");
-    $drapeauBelge.children().css("background-color", "black");
     $allemagne.html("Allemagne");
-    $drapeauAllemagne.children().css("background-color", "black");
     $hollande.html("Pays-bas");
+    $pologne.html("Pologne");
+    $drapeauFrance.children().css("background-color", "blue")
+    $drapeauBelge.children().css("background-color", "black");
+    $drapeauAllemagne.children().css("background-color", "black");
     $drapeauHollande.children().css("background-color", "red");
-
-
+    $drapeauPologne.children().css("background-color", "white");
+    
     //on ajoute un click
     $boutonOK.click(function () {
         demandeAuto = window.prompt("voulez-vous une demo auto (oui/non)", "oui");
