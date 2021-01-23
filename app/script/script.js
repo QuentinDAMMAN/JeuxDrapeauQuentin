@@ -1,26 +1,23 @@
 //mode use strict pour éviter des données non déclaré ni initialisé
 "use strict"
 
-//function onLoad
-$(function () {
-    france();
-    /*
-     *
-     Débug
-     *
-     france();
-     belgique();
-     allemagne();
-     hollande();
-     *
-     */
-});
-
 // ************************* Début Déclaration des var utiles ***************
+
 var $valider = $('#valider');
 var $lvl = $("#lvl");
 var $count = $("#count");
 var $chrono = $("#chrono");
+var $conteneur = $("#conteneur");
+var $body = $("body");
+var $header = $("header");
+var $footer = $("footer");
+var $welcome = $("#welcome");
+var $game = $("#game");
+var $rule = $("#rule");
+var $exemple = $("#exemple");
+var $commencer = $("#commencer");
+var $boutonOK = $("#ok");
+
 var nombreClick = 0;
 var milisecondes = 0;
 var secondes = 0;
@@ -28,6 +25,8 @@ var minutes = 0;
 var on = false;
 var reset = false;
 var timerID;
+var autoClickExemple = 0;
+var interval = 1000;
 
 //déclaration couleur
 var $blue = 'rgb(0, 0, 255)';
@@ -43,63 +42,62 @@ var $allemagne = $('#allemagne');
 var $hollande = $('#hollande');
 
 //déclaration drapeau pays
+var $drapeauExemple = $('#drapeau-exemple');
 var $drapeauFrance = $('#drapeau-france');
 var $drapeauBelge = $('#drapeau-belgique');
 var $drapeauAllemagne = $('#drapeau-allemagne');
 var $drapeauHollande = $('#drapeau-hollande');
 
-//ajout de texte dans les div l'html
-//$chrono.text("00:00:00")
-$valider.text("valider");
+//exemple demo automatique
+
 // ************************* Fin Déclaration des var utiles ***************
 
+$header.css("display", "none");
+$conteneur.css("display", "none");
+$footer.css("display", "none");
+$welcome.css("display", "none");
 
+var demandeAuto;
 
-function fin() {
-    console.log("fin de partie");
-    console.log("chrono : ", $("#chrono").text());
-    console.log("click : ", nombreClick);
-    $hollande.css("display", "none");
-    resetChrono();
-    secondes = 0;
-    minutes = 0;
-    nombreClick = 0;
-    $chrono.html("00 : 00 : 00");
-    $count.html("Click : 0");
-    $lvl.html("lvl : ");
-}
+//function onLoad
+$(function () {
 
+    acceuil();
+    /*
+     *
+     Débug
+     *
+     france();
+     belgique();
+     allemagne();
+     hollande();
+     *
+     */
+});
 
 // ************************* Début France ***************
 function france() {
+    $header.css("display", "flex");
+    $conteneur.css("display", "flex");
+    $footer.css("display", "flex");
+
+
+    //on affiche pas la div valider au démarrage
+    $valider.css("display", "none");
+
+    //on affiche le compteur de click, lvl, chrono
+    $count.css("display", "flex");
+    $chrono.css("display", "flex");
+    $lvl.css("display", "flex");
 
     //on lance le chrono 
     startChrono();
 
-    //on ititalise le texte dans les div pays et drapeau
-    $france.text("France");
-    $drapeauFrance.children().css("background-color", "blue")
-
-    //on modifie le texte de la div compteur
-    $count.text("Click : " + nombreClick);
-
-    //lvl1
-    $lvl.text("Lvl : 1");
-
-    //on affiche pas la div valider au démarrageF
-    $valider.css("display", "none");
-
     //affichage au démarage des textes "pays"
     $france.css("display", "flex");
-    $belgique.css("display", "none");
-    $allemagne.css("display", "none");
-    $hollande.css("display", "none");
 
     //affichage au démarage des drapeaux
     $drapeauFrance.css("display", "flex");
-    $drapeauBelge.css("display", "none");
-    $drapeauAllemagne.css("display", "none");
-    $drapeauHollande.css("display", "none");
 
     // on récupère les div enfant
     var $bleu = $drapeauFrance.children(':nth-child(1)');
@@ -155,14 +153,11 @@ function france() {
 // ************************* Début Belgique ***************
 function belgique() {
 
-    //on ititalise le texte dans les div pays et drapeau
-    $belgique.text("Belgique");
-    $drapeauBelge.children().css("background-color", "black").css("color", "black");
 
     //lvl2
     $lvl.text("Lvl : 2");
 
-    //on affiche pas la div valider au démarrageF
+    //on affiche pas la div valider au démarrage
     $valider.css("display", "none");
 
     //affichage au démarage des textes "pays"
@@ -171,7 +166,6 @@ function belgique() {
 
     //affichage au démarage des drapeaux
     $drapeauBelge.css("display", "flex");
-
 
     // on récupère les div enfant
     var $noir = $drapeauBelge.children(':nth-child(1)');
@@ -228,9 +222,6 @@ function belgique() {
 // ************************* Début Allemagne ***************
 function allemagne() {
 
-    //on ititalise le texte dans les div pays et drapeau
-    $allemagne.text("Allemagne");
-    $drapeauAllemagne.children().css("background-color", "black").css("color", "black");
 
     //lvl3
     $lvl.text("Lvl : 3");
@@ -298,9 +289,7 @@ function allemagne() {
 // ************************* Début Holande ***************
 function hollande() {
 
-    //on ititalise le texte dans les div pays et drapeau
-    $hollande.text("Pays-bas");
-    $drapeauHollande.children().css("background-color", "red").css("color", "red");
+
 
     //lvl4
     $lvl.text("Lvl : 4");
@@ -358,7 +347,7 @@ function hollande() {
     //click sur la div valider
     $valider.click(function () {
         $hollande.css("display", "none"),
-        $drapeauHollande.css("display", "none");
+            $drapeauHollande.css("display", "none");
         fin();
     });
 }
@@ -416,3 +405,177 @@ function resetChrono() {
     }
 }
 // ************************* Fin Chrono ***************
+
+function acceuil() {
+
+    //on applique une couleur de fond pour le menu d'acceuil
+    $('body').css("background-color", "rgba(108, 171, 195, 0.883)");
+
+    $welcome.css("display", "flex");
+    $rule.css("display", "flex");
+    $exemple.css("display", "none");
+    $commencer.css("display", "none");
+
+    //affichage au démarage des textes "pays"
+    $france.css("display", "none");
+    $belgique.css("display", "none");
+    $allemagne.css("display", "none");
+    $hollande.css("display", "none");
+
+    //affichage au démarage des drapeaux
+    $drapeauFrance.css("display", "none");
+    $drapeauBelge.css("display", "none");
+    $drapeauAllemagne.css("display", "none");
+    $drapeauHollande.css("display", "none");
+
+    //on met le texte dans les div header
+    $chrono.html("00 : 00 : 00");
+    $count.html("Click : 0");
+    $lvl.html("lvl : 1");
+
+    //on ititalise le texte dans les div pays et drapeau
+    $france.html("France");
+    $drapeauFrance.children().css("background-color", "blue")
+    $belgique.html("Belgique");
+    $drapeauBelge.children().css("background-color", "black");
+    $allemagne.html("Allemagne");
+    $drapeauAllemagne.children().css("background-color", "black");
+    $hollande.html("Pays-bas");
+    $drapeauHollande.children().css("background-color", "red");
+
+
+
+    $boutonOK.click(function(){
+        demandeAuto = window.prompt("voulez-vous une demo auto (oui/non)", "oui");
+
+        if (demandeAuto == "oui") {
+            $rule.css("display", "none");
+            $exemple.css("display", "flex");
+            setInterval(changementCouleurAuto, 1000);
+        } else {
+            $rule.css("display", "none");
+            $exemple.css("display", "flex");
+
+            $drapeauExemple.children().css("background-color", "black");
+            $commencer.css("display", "flex");
+        }
+    });
+
+    $commencer.click(function(){
+
+
+
+        $welcome.css("display", "none");
+        france();
+    })
+
+
+
+}
+    
+
+
+
+
+
+    //france();
+
+
+
+
+
+
+function changementCouleurAuto() {
+
+    var $zone1 = $drapeauExemple.children(':nth-child(1)');
+    var $zone2 = $drapeauExemple.children(':nth-child(2)');
+    var $zone3 = $drapeauExemple.children(':nth-child(3)');
+    var $mot1 = $game.children(':nth-child(1)');
+    var $mot2 = $game.children(':nth-child(2)');
+    var $mot3 = $game.children(':nth-child(3)');
+
+    switch (autoClickExemple) {
+        case 0:
+            $drapeauExemple.children().css("background-color", "yellowgreen");
+            $game.children().css("color", "yellowgreen");
+            autoClickExemple++;
+            break;
+
+        // zone 1
+        case 1:
+            $zone1.css("background-color", "red");
+            $mot1.css("color", "red");
+            autoClickExemple++;
+            break;
+        case 2:
+            $zone1.css("background-color", "orange");
+            $mot1.css("color", "orange");
+            autoClickExemple++;
+            break;
+        case 3:
+            $zone1.css("background-color", "black");
+            $mot1.css("color", "black");
+            autoClickExemple++;
+            break;
+
+        //zone 2
+        case 4:
+            $zone2.css("background-color", "red");
+            $mot2.css("color", "red");
+            autoClickExemple++;
+            break;
+        case 5:
+            $zone2.css("background-color", "orange");
+            $mot2.css("color", "orange");
+            autoClickExemple++;
+            break;
+        case 6:
+            $zone2.css("background-color", "black");
+            $mot2.css("color", "black");
+            autoClickExemple++;
+            break;
+
+        //zone 3
+        case 7:
+            $zone3.css("background-color", "red");
+            $mot3.css("color", "red");
+            autoClickExemple++;
+            break;
+        case 8:
+            $zone3.css("background-color", "orange");
+            $mot3.css("color", "orange");
+            autoClickExemple++;
+            break;
+        case 9:
+            $zone3.css("background-color", "black");
+            $mot3.css("color", "black");
+            autoClickExemple++;
+            break;
+        case 10:
+
+            $commencer.css("display", "flex");
+
+
+            break;
+        default:
+            break;
+    }
+}
+
+
+function fin() {
+    console.log("fin de partie");
+    console.log("chrono : ", $("#chrono").text());
+    console.log("click : ", nombreClick);
+    $hollande.css("display", "none");
+    resetChrono();
+    secondes = 0;
+    minutes = 0;
+    nombreClick = 0;
+    $chrono.html("00 : 00 : 00");
+    $count.html("Click : 0");
+    $lvl.html("lvl : ");
+}
+
+
+
