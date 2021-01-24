@@ -120,7 +120,7 @@ header{
     margin: 4%;
 }
 
-#commencer:hover , #ok:hover, #rejouer:hover, #next-1:hover, #next-2:hover{
+#commencer:hover , #ok:hover, #rejouer:hover, #next-1:hover, #next-2:hover, #abandonner:hover{
     border-right: 13px outset #196394;
     border-bottom: 13px outset #196394;
     background-color: gold;
@@ -170,7 +170,7 @@ header{
     align-content: center;
     justify-content: center;
     align-items: center;
-    height: 75%;
+    height: 100%;
     width: 100%;
 }
 
@@ -180,7 +180,6 @@ header{
     align-content: center;
     justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
 .pays{
@@ -188,8 +187,20 @@ header{
     align-content: center;
     justify-content: center;
     align-items: center;
-    height: 10%;
+    height: 15%;
     width: 100%;
+}
+
+#abandonner{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    width: 40%;
+    margin: 4%;
+    border: 7px solid #196394;
+    border-radius: 23px;
 }
 
 #france, #belgique, #allemagne, #hollande, #pologne{
@@ -215,8 +226,6 @@ header{
     align-content: center;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
 }
 
 #drapeau-france, #drapeau-belgique{
@@ -239,6 +248,60 @@ header{
     width: 95%
 }
 
+#drapeau-tcheque{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 95%;
+}
+
+#drapeau-tcheque>div{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+#rectangle {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border: #0f15185e inset 4px;
+}
+
+#rect1{
+    border-bottom: #0f15185e inset 2px;
+    z-index: 1;
+    background-color: blue;
+    height: 100%;
+    width: 100%;
+}
+
+#rect2{
+    border-top: #0f15185e inset 2px;
+    z-index: 1;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+
+#triangle{
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+    background-color: red;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+.a , .b, .c ,.e{
+    width: 100%;
+    height: 100%;
+}
+
 .a , .b, .c {
     width: 100%;
     height: 100%;
@@ -249,6 +312,14 @@ header{
     height: 100%;
     width: 30%;
     border: #0f15185e inset 4px;
+}
+
+  #triangle-complet{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 

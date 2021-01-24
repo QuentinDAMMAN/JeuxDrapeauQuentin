@@ -17,6 +17,7 @@ var $commencer = $("#commencer");
 var $boutonOK = $("#ok");
 var $boutonAccueil1 = $("#next-1");
 var $boutonAccueil2 = $("#next-2");
+var $abandonner = $("#abandonner");
 
 var nombreClick = 0;
 var milisecondes = 0;
@@ -42,7 +43,7 @@ var $belgique = $('#belgique');
 var $allemagne = $('#allemagne');
 var $hollande = $('#hollande');
 var $pologne = $("#pologne");
-//var $tcheque = $("#tcheque");
+var $tcheque = $("#tcheque");
 
 //déclaration drapeau pays
 var $drapeauExemple = $('#drapeau-exemple');
@@ -51,7 +52,13 @@ var $drapeauBelge = $('#drapeau-belgique');
 var $drapeauAllemagne = $('#drapeau-allemagne');
 var $drapeauHollande = $('#drapeau-hollande');
 var $drapeauPologne = $('#drapeau-pologne');
-//var $drapeauTcheque = $('#drapeau-tcheque');
+var $drapeauTcheque = $('#drapeau-tcheque');
+var $triangleTcheque = $("#triangle");
+var $triangleTchequeComplet = $("#triangle-complet");
+var $rectangleTcheque = $("#rectangle");
+var $rect1 = $("#rect1");
+var $rect2 = $("#rect2");
+
 // ************************* Fin Déclaration des var utiles ***************
 
 // ************************* initialisation des var utiles ***************
@@ -61,30 +68,15 @@ $belgique.css("display", "none");
 $allemagne.css("display", "none");
 $hollande.css("display", "none");
 $pologne.css("display", "none");
+$tcheque.css("display", "none");
 $drapeauFrance.css("display", "none");
 $drapeauBelge.css("display", "none");
 $drapeauAllemagne.css("display", "none");
 $drapeauHollande.css("display", "none");
 $drapeauPologne.css("display", "none");
+$drapeauTcheque.css("display", "none");
 
-//on met le texte dans les div header
-$chrono.html("00 : 00 : 00");
-$count.html("Click : 0");
-$lvl.html("lvl : 1");
-
-//on ititalise le texte dans les div pays et drapeau
-$france.html("France");
-$belgique.html("Belgique");
-$allemagne.html("Allemagne");
-$hollande.html("Pays-bas");
-$pologne.html("Pologne");
-$drapeauFrance.children().css("background-color", "blue")
-$drapeauBelge.children().css("background-color", "black");
-$drapeauAllemagne.children().css("background-color", "black");
-$drapeauHollande.children().css("background-color", "red");
-$drapeauPologne.children().css("background-color", "white");
 // ************************* initialisation des var utiles ***************
-
 $header.css("display", "none");
 $conteneur.css("display", "none");
 $welcome.css("display", "none");
@@ -93,6 +85,7 @@ $rule.css("display", "none");
 $exemple.css("display", "none");
 $commencer.css("display", "none");
 $boutonRejouer.css("display", "none");
+$abandonner.css("display", "none")
 
 //function onLoad
 $(function () {
@@ -112,11 +105,31 @@ $(function () {
 // ************************* Début France ***************
 function france() {
 
+    //on ititalise le texte dans les div pays et drapeau
+    $drapeauFrance.children().css("background-color", "blue")
+    $drapeauBelge.children().css("background-color", "black");
+    $drapeauAllemagne.children().css("background-color", "black");
+    $drapeauHollande.children().css("background-color", "red");
+    $drapeauPologne.children().css("background-color", "white");
+    // $drapeauTcheque.children().css("background-color", "blue");
+
+    //on met le texte dans les div header
+    $chrono.html("00 : 00 : 00");
+    $count.html("Click : 0");
+    $lvl.html("lvl : 1");
+    secondes = 0;
+    minutes = 0;
+    nombreClick = 0;
+    $chrono.html("00 : 00 : 00");
+    $count.html("Click : 0");
+
     // $body.css("background-color", "rgba(218, 194, 129, 0.924)");
     $body.css("background-color", "rgba(200, 166, 70, 0.924)");
     $header.css("display", "flex");
     $conteneur.css("display", "flex");
 
+    //lvl2
+    $lvl.text("Lvl : 1");
     //on affiche le compteur de click, lvl, chrono
     $count.css("display", "flex");
     $chrono.css("display", "flex");
@@ -342,14 +355,14 @@ function hollande() {
         if ($testHollande) {
             $hollande.css("display", "none"),
                 $drapeauHollande.css("display", "none");
-            Pologne();
+            pologne();
         }
     });
 }
 // ************************* Fin Hollande ***************
 
 // ************************* Début Pologne ***************
-function Pologne() {
+function pologne() {
 
     //lvl5
     $lvl.text("Lvl : 5");
@@ -396,11 +409,102 @@ function Pologne() {
         if ($testPologne) {
             $pologne.css("display", "none"),
                 $drapeauPologne.css("display", "none");
-            fin();
+            tcheque();
         }
     });
 }
-// ************************* Fin Hollande ***************
+// ************************* Fin Pologne ***************
+
+// ************************* Début tcheque ***************
+function tcheque() {
+
+    //lvl5
+    $lvl.text("Lvl : 6");
+
+    //affichage au démarage des textes "pays"
+    $tcheque.css("display", "flex");
+
+    //affichage au démarage des drapeaux
+    $drapeauTcheque.css("display", "flex");
+
+    // var $rectangle2 = $rectangleTcheque.children(':nth-child(2)');
+
+    // on applique un event clic au enfant div pour changer les couleurs
+    $triangleTcheque.click(function () {
+
+        //on incrémente le compteurs de clicks
+        nombreClick++;
+        //on modifie le texte de la div compteur
+        $count.text("Click : " + nombreClick);
+
+        var $elem = $(this).css("background-color");
+
+        switch ($elem) {
+            case $blue:
+                $(this).css("background-color", "white");
+                break;
+            case $white:
+                $(this).css("background-color", "red");
+                break;
+            case $red:
+                $(this).css("background-color", "blue");
+                break;
+            default:
+                break;
+        };
+    });
+
+    var $rectangle1 = $rectangleTcheque.children(':nth-child(1)');
+    var $rectangle2 = $rectangleTcheque.children(':nth-child(2)');
+
+
+    $rectangleTcheque.children().click(function () {
+
+        //on incrémente le compteurs de clicks
+        nombreClick++;
+        //on modifie le texte de la div compteur
+        $count.text("Click : " + nombreClick);
+
+        var $elem = $(this).css("background-color");
+
+        switch ($elem) {
+            case $blue:
+                $(this).css("background-color", "white");
+                break;
+            case $white:
+                $(this).css("background-color", "red");
+                break;
+            case $red:
+                $(this).css("background-color", "blue");
+                break;
+            default:
+                break;
+        };
+    });
+
+    $abandonner.css("display", "flex");
+
+    $abandonner.click(function () {
+        $abandonner.css("display", "none");
+        $tcheque.css("display", "none"),
+            $drapeauTcheque.css("display", "none");
+        fin();
+    });
+
+    // //test des couleurs à l'issue du click
+    // $drapeauPologne.children().click(function () {
+
+    //     //formule de test
+    //     var $testPologne = ($blanc.css("background-color") == ($white)) && ($rouge.css("background-color") == ($red));
+
+    //     if ($testPologne) {
+    //         $pologne.css("display", "none"),
+    //             $drapeauPologne.css("display", "none");
+    //         fin();
+    //     }
+    // });
+}
+// ************************* Fin tcheque ***************
 
 // ************************* début Chrono ***************
 function chrono() {
@@ -578,18 +682,24 @@ function fin() {
     // console.log("fin de partie");
     // console.log("chrono : ", $("#chrono").text());
     // console.log("click : ", nombreClick);
-    $hollande.css("display", "none");
-    // secondes = 0;
-    // minutes = 0;
-    // nombreClick = 0;
-    // $chrono.html("00 : 00 : 00");
-    // $count.html("Click : 0");
-    // $lvl.html("lvl : ");
 
-    resetChrono();
+
+    stopChrono();
 
     $conteneur.css("display", "none");
     $boutonRejouer.css("display", "flex");
     $header.css("height", "100%");
     $header.css("flex-direction", "column");
+
+    $boutonRejouer.click(function () {
+        secondes = 0;
+        minutes = 0;
+        nombreClick = 0;
+        $chrono.html("00 : 00 : 00");
+        $count.html("Click : 0");
+        $lvl.html("lvl : ");
+        $boutonRejouer.css("display", "none");
+        $header.css("height", "25%");
+        france();
+    });
 }
