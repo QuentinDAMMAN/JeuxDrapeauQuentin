@@ -5,6 +5,7 @@
 var $lvl = $("#lvl");
 var $count = $("#count");
 var $chrono = $("#chrono");
+var $boutonRejouer = $("#rejouer")
 var $conteneur = $("#conteneur");
 var $body = $("body");
 var $header = $("header");
@@ -68,6 +69,9 @@ $(function () {
 
 // ************************* Début France ***************
 function france() {
+
+    // $body.css("background-color", "rgba(218, 194, 129, 0.924)");
+    $body.css("background-color", "rgba(200, 166, 70, 0.924)");
     $header.css("display", "flex");
     $conteneur.css("display", "flex");
 
@@ -475,7 +479,13 @@ function changementCouleurAuto() {
             $mot3.css("color", "black");
             autoClickExemple++;
             break;
+
         case 10:
+            $drapeauExemple.children().css("background-color", "Navy");
+            $game.children().css("color", "Navy");
+            autoClickExemple++;
+            break;
+        case 11:
             $commencer.css("display", "flex");
             break;
         default:
@@ -485,18 +495,23 @@ function changementCouleurAuto() {
 
 function acceuil() {
 
+
+    /* 1: PAGE D'ACCEUIL ANNIMATION */
+
     $header.css("display", "none");
     $conteneur.css("display", "none");
     $welcome.css("display", "none");
 
     //on applique une couleur de fond pour le menu d'acceuil
     $('body').css("background-color", "rgba(108, 171, 195, 0.883)");
+    $boutonOK.css("color", "Navy");
 
     $welcome.css("display", "flex");
     $game.css("display", "flex");
-    $rule.css("display", "flex");
+    $rule.css("display", "none");
     $exemple.css("display", "none");
     $commencer.css("display", "none");
+    $boutonRejouer.css("display", "none");
 
     //on affiche pas de pays ni de drapeau
     $france.css("display", "none");
@@ -526,24 +541,30 @@ function acceuil() {
     $drapeauAllemagne.children().css("background-color", "black");
     $drapeauHollande.children().css("background-color", "red");
     $drapeauPologne.children().css("background-color", "white");
-    
+
     //on ajoute un click
     $boutonOK.click(function () {
-        demandeAuto = window.prompt("voulez-vous une demo auto (oui/non)", "oui");
+        // demandeAuto = window.prompt("voulez-vous une demo auto (oui/non)", "oui");
 
-        if (demandeAuto == "oui") {
-            $rule.css("display", "none");
-            $exemple.css("display", "flex");
+        // if (demandeAuto == "oui") {
+        //     $rule.css("display", "none");
+        //     $exemple.css("display", "flex");
 
-            setInterval(changementCouleurAuto, 1000);
-        } else {
-            $rule.css("display", "none");
-            $exemple.css("display", "flex");
+        //     setInterval(changementCouleurAuto, 1000);
+        // } else {
+        //     $rule.css("display", "none");
+        //     $exemple.css("display", "flex");
 
-            $drapeauExemple.children().css("background-color", "black");
-            $commencer.css("display", "flex");
-        }
+        //     $drapeauExemple.children().css("background-color", "Navy");
+        //     $game.children().css("color", "Navy");
+        //     $commencer.css("color", "Navy");
+        //     $commencer.css("display", "flex");
+        // }
+
+        console.log("click");
     });
+
+
 
     $commencer.click(function () {
         $welcome.css("display", "none");
@@ -552,18 +573,21 @@ function acceuil() {
 }
 
 function fin() {
-    console.log("fin de partie");
-    console.log("chrono : ", $("#chrono").text());
-    console.log("click : ", nombreClick);
+    // console.log("fin de partie");
+    // console.log("chrono : ", $("#chrono").text());
+    // console.log("click : ", nombreClick);
     $hollande.css("display", "none");
+    // secondes = 0;
+    // minutes = 0;
+    // nombreClick = 0;
+    // $chrono.html("00 : 00 : 00");
+    // $count.html("Click : 0");
+    // $lvl.html("lvl : ");
+
     resetChrono();
-    secondes = 0;
-    minutes = 0;
-    nombreClick = 0;
-    $chrono.html("00 : 00 : 00");
-    $count.html("Click : 0");
-    $lvl.html("lvl : ");
+
+    $conteneur.css("display", "none");
+    $boutonRejouer.css("display", "flex");
+    $header.css("height", "100%");
+    $header.css("flex-direction", "column");
 }
-
-
-
