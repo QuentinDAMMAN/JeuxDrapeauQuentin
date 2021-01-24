@@ -15,6 +15,8 @@ var $rule = $("#rule");
 var $exemple = $("#exemple");
 var $commencer = $("#commencer");
 var $boutonOK = $("#ok");
+var $boutonAccueil1 = $("#next-1");
+var $boutonAccueil2 = $("#next-2");
 
 var nombreClick = 0;
 var milisecondes = 0;
@@ -51,6 +53,46 @@ var $drapeauHollande = $('#drapeau-hollande');
 var $drapeauPologne = $('#drapeau-pologne');
 //var $drapeauTcheque = $('#drapeau-tcheque');
 // ************************* Fin Déclaration des var utiles ***************
+
+// ************************* initialisation des var utiles ***************
+//on affiche pas de pays ni de drapeau
+$france.css("display", "none");
+$belgique.css("display", "none");
+$allemagne.css("display", "none");
+$hollande.css("display", "none");
+$pologne.css("display", "none");
+$drapeauFrance.css("display", "none");
+$drapeauBelge.css("display", "none");
+$drapeauAllemagne.css("display", "none");
+$drapeauHollande.css("display", "none");
+$drapeauPologne.css("display", "none");
+
+//on met le texte dans les div header
+$chrono.html("00 : 00 : 00");
+$count.html("Click : 0");
+$lvl.html("lvl : 1");
+
+//on ititalise le texte dans les div pays et drapeau
+$france.html("France");
+$belgique.html("Belgique");
+$allemagne.html("Allemagne");
+$hollande.html("Pays-bas");
+$pologne.html("Pologne");
+$drapeauFrance.children().css("background-color", "blue")
+$drapeauBelge.children().css("background-color", "black");
+$drapeauAllemagne.children().css("background-color", "black");
+$drapeauHollande.children().css("background-color", "red");
+$drapeauPologne.children().css("background-color", "white");
+// ************************* initialisation des var utiles ***************
+
+$header.css("display", "none");
+$conteneur.css("display", "none");
+$welcome.css("display", "none");
+$game.css("display", "none");
+$rule.css("display", "none");
+$exemple.css("display", "none");
+$commencer.css("display", "none");
+$boutonRejouer.css("display", "none");
 
 //function onLoad
 $(function () {
@@ -495,81 +537,41 @@ function changementCouleurAuto() {
 
 function acceuil() {
 
-
-    /* 1: PAGE D'ACCEUIL ANNIMATION */
-
-    $header.css("display", "none");
-    $conteneur.css("display", "none");
-    $welcome.css("display", "none");
-
-    //on applique une couleur de fond pour le menu d'acceuil
+    /* 1: PAGE D'ACCEUIL */
     $('body').css("background-color", "rgba(108, 171, 195, 0.883)");
     $boutonOK.css("color", "Navy");
+    $boutonAccueil1.css("color", "Navy");
+    $boutonAccueil2.css("color", "Navy");
 
     $welcome.css("display", "flex");
     $game.css("display", "flex");
-    $rule.css("display", "none");
-    $exemple.css("display", "none");
-    $commencer.css("display", "none");
-    $boutonRejouer.css("display", "none");
 
-    //on affiche pas de pays ni de drapeau
-    $france.css("display", "none");
-    $belgique.css("display", "none");
-    $allemagne.css("display", "none");
-    $hollande.css("display", "none");
-    $pologne.css("display", "none");
-    $drapeauFrance.css("display", "none");
-    $drapeauBelge.css("display", "none");
-    $drapeauAllemagne.css("display", "none");
-    $drapeauHollande.css("display", "none");
-    $drapeauPologne.css("display", "none");
+    $boutonAccueil1.css("display", "flex");
+    $boutonAccueil2.css("display", "flex");
 
-    //on met le texte dans les div header
-    $chrono.html("00 : 00 : 00");
-    $count.html("Click : 0");
-    $lvl.html("lvl : 1");
-
-    //on ititalise le texte dans les div pays et drapeau
-    $france.html("France");
-    $belgique.html("Belgique");
-    $allemagne.html("Allemagne");
-    $hollande.html("Pays-bas");
-    $pologne.html("Pologne");
-    $drapeauFrance.children().css("background-color", "blue")
-    $drapeauBelge.children().css("background-color", "black");
-    $drapeauAllemagne.children().css("background-color", "black");
-    $drapeauHollande.children().css("background-color", "red");
-    $drapeauPologne.children().css("background-color", "white");
-
-    //on ajoute un click
-    $boutonOK.click(function () {
-        // demandeAuto = window.prompt("voulez-vous une demo auto (oui/non)", "oui");
-
-        // if (demandeAuto == "oui") {
-        //     $rule.css("display", "none");
-        //     $exemple.css("display", "flex");
-
-        //     setInterval(changementCouleurAuto, 1000);
-        // } else {
-        //     $rule.css("display", "none");
-        //     $exemple.css("display", "flex");
-
-        //     $drapeauExemple.children().css("background-color", "Navy");
-        //     $game.children().css("color", "Navy");
-        //     $commencer.css("color", "Navy");
-        //     $commencer.css("display", "flex");
-        // }
-
-        console.log("click");
+    $boutonAccueil1.click(function () {
+        $boutonAccueil1.css("display", "none");
+        $boutonAccueil2.css("display", "none");
+        $rule.css("display", "flex");
     });
 
+    $boutonAccueil2.click(function () {
+        $welcome.css("display", "none");
+        france();
+    });
 
+    /* 1: Explication */
+
+    $boutonOK.click(function () {
+        $rule.css("display", "none");
+        $exemple.css("display", "flex");
+        setInterval(changementCouleurAuto, 1000);
+    });
 
     $commencer.click(function () {
         $welcome.css("display", "none");
         france();
-    })
+    });
 }
 
 function fin() {

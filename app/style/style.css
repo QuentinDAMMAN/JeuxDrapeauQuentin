@@ -70,6 +70,15 @@ header{
     width: 100%;
 }
 
+#next-1, #next-2{
+    display: flex;
+    border: 7px solid #196394;
+    border-radius: 23px;
+    width: 50%;
+    height: 15%;
+    margin: 4%;
+}
+
 /* RULE */
 #rule{
     display: flex;
@@ -111,7 +120,7 @@ header{
     margin: 4%;
 }
 
-#commencer:hover , #ok:hover, #rejouer{
+#commencer:hover , #ok:hover, #rejouer:hover, #next-1:hover, #next-2:hover{
     border-right: 13px outset #196394;
     border-bottom: 13px outset #196394;
     background-color: gold;
@@ -244,6 +253,7 @@ header{
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /* ANIMATION */
+
 
 
 
