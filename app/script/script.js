@@ -42,7 +42,7 @@ var $belgique = $('#belgique');
 var $allemagne = $('#allemagne');
 var $hollande = $('#hollande');
 var $pologne = $("#pologne");
-//var $tcheque = $("#tcheque");
+var $tcheque = $("#tcheque");
 
 //déclaration drapeau pays
 var $drapeauExemple = $('#drapeau-exemple');
@@ -51,7 +51,7 @@ var $drapeauBelge = $('#drapeau-belgique');
 var $drapeauAllemagne = $('#drapeau-allemagne');
 var $drapeauHollande = $('#drapeau-hollande');
 var $drapeauPologne = $('#drapeau-pologne');
-//var $drapeauTcheque = $('#drapeau-tcheque');
+var $drapeauTcheque = $('#drapeau-tcheque');
 // ************************* Fin Déclaration des var utiles ***************
 
 // ************************* initialisation des var utiles ***************
@@ -61,11 +61,13 @@ $belgique.css("display", "none");
 $allemagne.css("display", "none");
 $hollande.css("display", "none");
 $pologne.css("display", "none");
+$tcheque.css("display", "none");
 $drapeauFrance.css("display", "none");
 $drapeauBelge.css("display", "none");
 $drapeauAllemagne.css("display", "none");
 $drapeauHollande.css("display", "none");
 $drapeauPologne.css("display", "none");
+$drapeauTcheque.css("display", "none");
 
 //on met le texte dans les div header
 $chrono.html("00 : 00 : 00");
@@ -73,16 +75,12 @@ $count.html("Click : 0");
 $lvl.html("lvl : 1");
 
 //on ititalise le texte dans les div pays et drapeau
-$france.html("France");
-$belgique.html("Belgique");
-$allemagne.html("Allemagne");
-$hollande.html("Pays-bas");
-$pologne.html("Pologne");
 $drapeauFrance.children().css("background-color", "blue")
 $drapeauBelge.children().css("background-color", "black");
 $drapeauAllemagne.children().css("background-color", "black");
 $drapeauHollande.children().css("background-color", "red");
 $drapeauPologne.children().css("background-color", "white");
+$drapeauTcheque.children().css("background-color", "blue");
 // ************************* initialisation des var utiles ***************
 
 $header.css("display", "none");
@@ -342,14 +340,14 @@ function hollande() {
         if ($testHollande) {
             $hollande.css("display", "none"),
                 $drapeauHollande.css("display", "none");
-            Pologne();
+            pologne();
         }
     });
 }
 // ************************* Fin Hollande ***************
 
 // ************************* Début Pologne ***************
-function Pologne() {
+function pologne() {
 
     //lvl5
     $lvl.text("Lvl : 5");
@@ -396,11 +394,65 @@ function Pologne() {
         if ($testPologne) {
             $pologne.css("display", "none"),
                 $drapeauPologne.css("display", "none");
+            tcheque();
+        }
+    });
+}
+// ************************* Fin Pologne ***************
+
+// ************************* Début Pologne ***************
+function tcheque() {
+
+    //lvl5
+    $lvl.text("Lvl : 6");
+
+    //affichage au démarage des textes "pays"
+    $tcheque.css("display", "flex");
+
+    //affichage au démarage des drapeaux
+    $drapeauTcheque.css("display", "flex");
+
+    // on récupère les div enfant
+    var $blanc = $drapeauPologne.children(':nth-child(1)');
+    var $rouge = $drapeauPologne.children(':nth-child(2)');
+
+
+    // on applique un event clic au enfant div pour changer les couleurs
+    $drapeauPologne.children().click(function () {
+
+        //on incrémente le compteurs de clicks
+        nombreClick++;
+        //on modifie le texte de la div compteur
+        $count.text("Click : " + nombreClick);
+
+        var $elem = $(this).css("background-color");
+
+        switch ($elem) {
+            case $white:
+                $(this).css("background-color", "red");
+                break;
+            case $red:
+                $(this).css("background-color", "white");
+                break;
+            default:
+                break;
+        };
+    });
+
+    //test des couleurs à l'issue du click
+    $drapeauPologne.children().click(function () {
+
+        //formule de test
+        var $testPologne = ($blanc.css("background-color") == ($white)) && ($rouge.css("background-color") == ($red));
+
+        if ($testPologne) {
+            $pologne.css("display", "none"),
+                $drapeauPologne.css("display", "none");
             fin();
         }
     });
 }
-// ************************* Fin Hollande ***************
+// ************************* Fin Pologne ***************
 
 // ************************* début Chrono ***************
 function chrono() {
