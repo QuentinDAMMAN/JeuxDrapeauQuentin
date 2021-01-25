@@ -11,6 +11,7 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0;
+    background-color: rgba(164, 196, 255, 0.883);
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -20,13 +21,14 @@ header{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: rgb(129, 114, 74);
+    background-color: rgba(6, 0, 189, 0.753);
+    color: rgb(0, 247, 255);;
     justify-content: space-between;
-    height: 25%;
+    height: 30%;
     width: 100%;
 }
 
-#lvl, #count, #chrono, #rejouer{
+#lvl, #count, #chrono, #rejouer, #suivant{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -42,6 +44,18 @@ header{
     border-radius: 23px;
     width: 50%;
     height: 20%;
+    margin: 4%;
+}
+
+#suivant{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 7px solid rgba(164, 196, 255, 0.883);;
+    border-radius: 23px;
+    width: 50%;
+    height: 25%;
     margin: 4%;
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -120,7 +134,7 @@ header{
     margin: 4%;
 }
 
-#commencer:hover , #ok:hover, #rejouer:hover, #next-1:hover, #next-2:hover, #abandonner:hover{
+#commencer:hover , #ok:hover, #rejouer:hover, #next-1:hover, #next-2:hover, #abandonner:hover, #suivant:hover{
     border-right: 13px outset #196394;
     border-bottom: 13px outset #196394;
     background-color: gold;
@@ -217,7 +231,7 @@ header{
     align-content: center;
     justify-content: center;
     align-items: center;
-    height: 90%;
+    height: 100%;
     width: 100%;
 }
 
