@@ -1,1 +1,74 @@
-git log --pretty=format:"%h %aD | %s%d [%an]" --graph --date=short > git.txt
+*   9b458e0 Mon, 25 Jan 2021 15:20:01 +0100 | Merge branch 'dev-quentin' into main (HEAD -> dev-quentin, origin/main, origin/dev-quentin, main) [QuentinDAMMAN]
+|\  
+| * 16d8331 Mon, 25 Jan 2021 15:19:26 +0100 | ajout de quelque animation CSS [QuentinDAMMAN]
+|/  
+*   481e17c Mon, 25 Jan 2021 14:11:00 +0100 | Merge branch 'dev-quentin' into main [QuentinDAMMAN]
+|\  
+| * cd8abce Mon, 25 Jan 2021 14:10:07 +0100 | page de fin ajouté [QuentinDAMMAN]
+|/  
+*   eb47dca Mon, 25 Jan 2021 09:33:29 +0100 | Merge branch 'dev-quentin' into main [QuentinDAMMAN]
+|\  
+| * d82f483 Mon, 25 Jan 2021 09:32:55 +0100 | fix bug click, le nombre de click est maintenant reset à chaque drapeau [QuentinDAMMAN]
+| * 80b9bb7 Mon, 25 Jan 2021 01:51:16 +0100 | le timer est reset à chaque nouveaux drapeaux, le compteurs de click bug ?, ajout d'un effet de couleur sur les nom du pays [QuentinDAMMAN]
+|/  
+*   357b503 Sun, 24 Jan 2021 20:49:36 +0100 | Merge branch 'dev-quentin' into main [QuentinDAMMAN]
+|\  
+| * ea09b09 Sun, 24 Jan 2021 20:47:15 +0100 | ajout abandonner au drapeau tchèque non fonctionnel [QuentinDAMMAN]
+| * ef5a2a0 Sun, 24 Jan 2021 16:30:29 +0100 | HTML + CSS drapeau rep Tchèque [QuentinDAMMAN]
+|/  
+*   c43c626 Sun, 24 Jan 2021 15:11:46 +0100 | Merge branch 'dev-quentin' into main [QuentinDAMMAN]
+|\  
+| * db1c0aa Sun, 24 Jan 2021 15:10:32 +0100 | suppression du prompt [QuentinDAMMAN]
+| * ec61e1c Sun, 24 Jan 2021 01:02:05 +0100 | ajout drapeau polonais [Quentin.DAMMAN]
+| * f6fc072 Sat, 23 Jan 2021 22:49:07 +0100 | ajout du drapeau polonais; [Quentin.DAMMAN]
+| * 5d1a216 Sat, 23 Jan 2021 21:59:11 +0100 | responsivité ok sur galaxy S5 (chrome dev tools) + tri CSS (commentaire , gestion des %) [Quentin.DAMMAN]
+|/  
+*   4c4680e Sat, 23 Jan 2021 19:14:23 +0100 | Merge branch 'dev-quentin' into main [Quentin.DAMMAN]
+|\  
+| * 2c643ea Sat, 23 Jan 2021 18:58:50 +0100 | suppression du bouton valider, étape 8 ok [Quentin.DAMMAN]
+| * 90551c1 Sat, 23 Jan 2021 18:04:32 +0100 | interface démarer [Quentin.DAMMAN]
+|/  
+*   c92982c Fri, 22 Jan 2021 23:59:50 +0100 | Merge branch 'dev-quentin' into main [Quentin.DAMMAN]
+|\  
+| * 594595e Fri, 22 Jan 2021 23:57:08 +0100 | chrono + étape 6 ok [Quentin.DAMMAN]
+| * ae703ed Fri, 22 Jan 2021 19:54:50 +0100 | compteur de click + lvl ajouté, suppression de lignes inutiles [Quentin.DAMMAN]
+|/  
+*   aa65ae1 Fri, 22 Jan 2021 19:05:25 +0100 | Merge branch 'dev-quentin' into main [Quentin.DAMMAN]
+|\  
+| * 667bbb2 Fri, 22 Jan 2021 18:58:33 +0100 | factorisation du code pour éviter les copier coller, étape 7 ok [Quentin.DAMMAN]
+|/  
+*   7a0db0b Fri, 22 Jan 2021 15:00:20 +0100 | Merge branch 'dev-quentin' into main [Quentin.DAMMAN]
+|\  
+| * 78f034a Fri, 22 Jan 2021 14:55:48 +0100 | beaucoup de css pour une application plus jolie, ajout de flex -box , la responsivité semble ok [Quentin.DAMMAN]
+|/  
+*   d3cfce4 Fri, 22 Jan 2021 10:42:34 +0100 | Merge branch 'dev-quentin' into main [Quentin.DAMMAN]
+|\  
+| * fa5670d Fri, 22 Jan 2021 10:41:40 +0100 | étape 5 : drapeau allemand + hollandais [Quentin.DAMMAN]
+|/  
+*   5100c34 Fri, 22 Jan 2021 00:45:24 +0100 | Merge branch 'dev-quentin' into main [Quentin.DAMMAN]
+|\  
+| * d21f2ca Fri, 22 Jan 2021 00:43:53 +0100 | après de la casse, les bug sont fixer, ajout de plus d'html [Quentin.DAMMAN]
+|/  
+*   cc7c76c Thu, 21 Jan 2021 21:34:18 +0100 | Merge branch 'dev-quentin' into main [Quentin.DAMMAN]
+|\  
+| * cbf68c6 Thu, 21 Jan 2021 21:31:55 +0100 | étape 3 + étape 4 [Quentin.DAMMAN]
+|/  
+*   598ce4f Thu, 21 Jan 2021 20:18:37 +0100 | Merge branch 'dev-quentin' into main [Quentin.DAMMAN]
+|\  
+| * 99c0427 Thu, 21 Jan 2021 20:17:33 +0100 | fix bug bootstrap + script [Quentin.DAMMAN]
+|/  
+*   2f7bd5c Thu, 21 Jan 2021 19:59:43 +0100 | Merge branch 'dev-quentin' into main [Quentin.DAMMAN]
+|\  
+| *   d691053 Thu, 21 Jan 2021 19:57:42 +0100 | Merge branch 'dev-quentin' of https://github.com/QuentinDAMMAN/JeuxDrapeauQuentin into dev-quentin [Quentin.DAMMAN]
+| |\  
+| | * 75d7934 Thu, 21 Jan 2021 19:54:28 +0100 | (bootstrap de coté) + étape 1 finis [Quentin.DAMMAN]
+| |/  
+|/|   
+| * 810f965 Thu, 21 Jan 2021 19:54:28 +0100 | (bootstrap de coté) + étape 1 + étape 2 [Quentin.DAMMAN]
+|/  
+*   ef1e478 Thu, 21 Jan 2021 17:13:44 +0100 | Merge branch 'dev-quentin' into main [Quentin.DAMMAN]
+|\  
+| * aa19409 Thu, 21 Jan 2021 17:00:41 +0100 | ajout jQuery + ajout Boostrap [Quentin.DAMMAN]
+|/  
+* 25792b3 Thu, 21 Jan 2021 16:43:16 +0100 | création du squelette html de la page: div pays, div drapeau et div valider [Quentin.DAMMAN]
+* 2bf4a9a Thu, 21 Jan 2021 16:28:48 +0100 | first commit [Quentin.DAMMAN]
