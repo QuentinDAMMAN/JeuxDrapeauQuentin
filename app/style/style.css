@@ -12,18 +12,18 @@ body{
     justify-content: center;
     margin: 0;
     background-color: rgba(164, 196, 255, 0.883);
+    font-family: 'Comic Sans MS';
+    font-size: small;
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /* HEADER */
 header{
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     background-color: rgba(6, 0, 189, 0.753);
-    color: rgb(0, 247, 255);;
-    justify-content: space-between;
+    color: rgb(0, 247, 255);
     height: 30%;
     width: 100%;
 }
@@ -40,10 +40,10 @@ header{
 
 #rejouer{
     display: flex;
-    border: 7px solid #196394;
+    border: 7px solid rgb(0, 247, 255);
     border-radius: 23px;
     width: 50%;
-    height: 20%;
+    height: 5%;
     margin: 4%;
 }
 
@@ -57,6 +57,33 @@ header{
     width: 50%;
     height: 25%;
     margin: 4%;
+}
+
+#resulat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 100%;
+}
+
+#resulat>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+#lvl1, #lvl2, #lvl3, #lvl4, #lvl5, #lvl6{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 

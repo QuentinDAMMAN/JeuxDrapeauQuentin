@@ -19,6 +19,14 @@ var $boutonAccueil1 = $("#next-1");
 var $boutonAccueil2 = $("#next-2");
 var $abandonner = $("#abandonner");
 var $suivant = $("#suivant");
+var $score = $("#score");
+var $resultat = $("#resultat");
+var $lvl1 = $("#lvl1");
+var $lvl2 = $("#lvl2");
+var $lvl3 = $("#lvl3");
+var $lvl4 = $("#lvl4");
+var $lvl5 = $("#lvl5");
+var $lvl6 = $("#lvl6");
 
 var nombreClick = 0;
 var nombreClickTotal = 0;
@@ -30,12 +38,25 @@ var reset = false;
 var timerID;
 var autoClickExemple = 0;
 var interval = 1000;
-var timerFrance;
-var timerBelgique;
-var timerAllemagne;
-var timerHollande;
-var timerPologne;
-var timerTcheque;
+
+var timerFrance = 0;
+var timerBelgique = 0;
+var timerAllemagne = 0;
+var timerHollande = 0;
+var timerPologne = 0;
+var timerTcheque = 0;
+var scoreFrance = 0;
+var scoreBelgique = 0;
+var scoreAllemagne = 0;
+var scoreHollande = 0;
+var scorePologne = 0;
+var scoreTcheque = 0;
+var clicLevel1 = 0;
+var clicLevel2 = 0;
+var clicLevel3 = 0;
+var clicLevel4 = 0;
+var clicLevel5 = 0;
+var clicLevel6 = 0;
 
 //déclaration couleur
 var $blue = 'rgb(0, 0, 255)';
@@ -93,6 +114,8 @@ $commencer.css("display", "none");
 $boutonRejouer.css("display", "none");
 $abandonner.css("display", "none");
 $suivant.css("display", "none");
+$score.css("display", "none");
+$resultat.css("display", "none");
 
 //function onLoad
 $(function () {
@@ -111,6 +134,8 @@ $(function () {
 
 // ************************* Début France ***************
 function france() {
+    var clickOpti = 3;
+    var tempsOpti = 1;
 
     //on ititalise le texte dans les div pays et drapeau
     $drapeauFrance.children().css("background-color", "blue")
@@ -121,7 +146,7 @@ function france() {
     // $drapeauTcheque.children().css("background-color", "blue");
 
     //on met le texte dans les div header
-    $chrono.html("00 : 00 : 00");
+    // $chrono.html("00 : 00 : 00");
     $count.html("Click : 0");
     $lvl.html("lvl : 1");
 
@@ -135,6 +160,7 @@ function france() {
     $count.css("display", "flex");
     $chrono.css("display", "flex");
     $lvl.css("display", "flex");
+    $score.css("display", "none");
 
     //on lance le chrono 
     startChrono();
@@ -182,6 +208,11 @@ function france() {
     //test des couleurs à l'issue du click
     $drapeauFrance.children().click(function () {
 
+        // if ((secondes < tempsOpti) && ($count.text() < clickOpti)){
+        //     $score.text("Score : " + clickOpti);
+        //     $score.css("display", "flex");
+        // }
+
         //formule de test
         var $testFrance = ($bleu.css("background-color") == $blue) && ($blanc.css("background-color") == $white) && ($rouge.css("background-color") == $red);
 
@@ -189,9 +220,10 @@ function france() {
             $france.css("display", "none");
             $drapeauFrance.css("display", "none");
             // belgique();
-            timerFrance = $("#chrono").text();
             console.log("chrono : ", $("#chrono").text());
             console.log("click : ", nombreClick);
+            clicLevel1 = nombreClick;
+            timerFrance = $("#chrono").text();
             // afficherFrance();
             // setInterval(afficherFrance(),3000);
             finlvl();
@@ -205,7 +237,6 @@ function france() {
 }
 
 // function afficherFrance (){
-    
 //     var $bleu = $drapeauFrance.children(':nth-child(1)').css("background-color", "blue");
 //     var $blanc = $drapeauFrance.children(':nth-child(2)').css("background-color", "white");
 //     var $rouge = $drapeauFrance.children(':nth-child(3)').css("background-color", "red");
@@ -223,7 +254,7 @@ function belgique() {
     $header.css("height", "30%");
     $header.css("flex-direction", "row");
     $chrono.html("00 : 00 : 00");
-
+    
     //lvl2
     $lvl.html("Lvl : 2");
 
@@ -283,6 +314,8 @@ function belgique() {
             timerBelgique = $("#chrono").text();
             console.log("chrono : ", $("#chrono").text());
             console.log("click : ", nombreClick);
+            clicLevel2 = nombreClick;
+            timerBelgique = $("#chrono").text();
             finlvl();
         }
     });
@@ -361,6 +394,8 @@ function allemagne() {
             timerAllemagne = $("#chrono").text();
             console.log("chrono : ", $("#chrono").text());
             console.log("click : ", nombreClick);
+            clicLevel3 = nombreClick;
+            timerAllemagne = $("#chrono").text();
             finlvl();
         }
     });
@@ -439,6 +474,8 @@ function hollande() {
             timerHollande = $("#chrono").text();
             console.log("chrono : ", $("#chrono").text());
             console.log("click : ", nombreClick);
+            clicLevel4 = nombreClick;
+            timerHollande = $("#chrono").text();
             finlvl();
         }
     });
@@ -512,6 +549,8 @@ function pologne() {
             timerPologne = $("#chrono").text();
             console.log("chrono : ", $("#chrono").text());
             console.log("click : ", nombreClick);
+            clicLevel5 = nombreClick;
+            timerPologne = $("#chrono").text();
             finlvl();
         }
     });
@@ -543,8 +582,6 @@ function tcheque() {
     //affichage au démarage des drapeaux
     $drapeauTcheque.css("display", "flex");
 
-    // var $rectangle2 = $rectangleTcheque.children(':nth-child(2)');
-
     // on applique un event clic au enfant div pour changer les couleurs
     $triangleTcheque.click(function () {
 
@@ -562,7 +599,7 @@ function tcheque() {
         if ($testTcheque) {
             $tcheque.css("display", "none"),
                 $drapeauTcheque.css("display", "none");
-            fin();
+            // fin();
         }
 
         switch ($elem) {
@@ -583,9 +620,7 @@ function tcheque() {
     var $rectangle1 = $rectangleTcheque.children(':nth-child(1)');
     var $rectangle2 = $rectangleTcheque.children(':nth-child(2)');
 
-
     $rectangleTcheque.children().click(function () {
-
         //on incrémente le compteurs de clicks
         nombreClick++;
         nombreClickTotal++;
@@ -597,7 +632,7 @@ function tcheque() {
         if ($testTcheque) {
             $tcheque.css("display", "none"),
                 $drapeauTcheque.css("display", "none");
-            fin();
+            // fin();
         }
 
         var $elem = $(this).css("background-color");
@@ -624,14 +659,14 @@ function tcheque() {
     $abandonner.click(function () {
         $abandonner.css("display", "none");
         $tcheque.css("display", "none"),
-            $drapeauTcheque.css("display", "none");
+        $drapeauTcheque.css("display", "none");
+        clicLevel6 = nombreClick;
+        timerTcheque = $("#chrono").text();
         fin();
     });
 
     //test des couleurs à l'issue du click
     // $drapeauTcheque.children().click(function () {
-
-        
     // });
 }
 // ************************* Fin tcheque ***************
@@ -813,21 +848,67 @@ function acceuil() {
 function fin() {
     stopChrono()
     $conteneur.css("display", "none");
-    $boutonRejouer.css("display", "flex");
     $header.css("height", "100%");
     $header.css("flex-direction", "column");
+    $boutonRejouer.css("display", "flex");
+    $resultat.css("display", "flex");
+    $resultat.css("flex-direction", "column");
 
-    $boutonRejouer.click(function () {
-        secondes = 0;
-        minutes = 0;
-        nombreClick = 0;
-        $chrono.html("00 : 00 : 00");
-        $count.html("Click : 0");
-        $lvl.html("lvl : ");
-        $boutonRejouer.css("display", "none");
-        $header.css("height", "25%");
-        france();
-    });
+    var $clickLVL1 = $lvl1.children(':nth-child(2)');
+    var $chronoLVL1 = $lvl1.children(':nth-child(3)');
+    var $clickLVL2 = $lvl2.children(':nth-child(2)');
+    var $chronoLVL2 = $lvl2.children(':nth-child(3)');
+    var $clickLVL3 = $lvl3.children(':nth-child(2)');
+    var $chronoLVL3 = $lvl3.children(':nth-child(3)');
+    var $clickLVL4 = $lvl4.children(':nth-child(2)');
+    var $chronoLVL4 = $lvl4.children(':nth-child(3)');
+    var $clickLVL5 = $lvl5.children(':nth-child(2)');
+    var $chronoLVL5 = $lvl5.children(':nth-child(3)');
+    var $clickLVL6 = $lvl6.children(':nth-child(2)');
+    var $chronoLVL6 = $lvl6.children(':nth-child(3)');
+
+
+    $clickLVL1.html("Click : "+ clicLevel1);
+    $chronoLVL1.html("temps : "+timerFrance);
+    $clickLVL2.html("Click : "+ clicLevel2);
+    $chronoLVL2.html("temps : "+timerBelgique);
+    $clickLVL3.html("Click : "+ clicLevel3);
+    $chronoLVL3.html("temps : "+timerAllemagne);
+    $clickLVL4.html("Click : "+ clicLevel4);
+    $chronoLVL4.html("temps : "+timerHollande);
+    $clickLVL5.html("Click : "+ clicLevel5);
+    $chronoLVL5.html("temps : "+timerPologne);
+    $clickLVL6.html("Click : "+ clicLevel6);
+    $chronoLVL6.html("temps : "+timerTcheque);
+
+
+    $lvl1.css("display", "flex");
+    $lvl2.css("display", "flex");
+    $lvl3.css("display", "flex");
+    $lvl4.css("display", "flex");
+    $lvl5.css("display", "flex");
+    $lvl6.css("display", "flex");
+
+    $lvl.css("display", "none");
+    $chrono.css("display", "none");
+    $count.css("display", "none");
+    $suivant.css("display", "none");
+    $header.css("flex-direction", "column");
+
+    
+
+
+//     $boutonRejouer.click(function () {
+//         secondes = 0;
+//         minutes = 0;
+//         nombreClick = 0;
+//         $chrono.html("00 : 00 : 00");
+//         $count.html("Click : 0");
+//         $lvl.html("lvl : ");
+//         $boutonRejouer.css("display", "none");
+//         $header.css("height", "25%");
+//         france();
+//     });
 }
 
 function finlvl() {
@@ -838,7 +919,6 @@ function finlvl() {
     $header.css("height", "100%");
     $header.css("flex-direction", "column");
     resetChrono();
-
 }
 
 
