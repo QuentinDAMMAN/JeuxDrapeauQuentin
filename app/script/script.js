@@ -21,6 +21,7 @@ var $abandonner = $("#abandonner");
 var $suivant = $("#suivant");
 
 var nombreClick = 0;
+var nombreClickTotal = 0;
 var milisecondes = 0;
 var secondes = 0;
 var minutes = 0;
@@ -29,6 +30,12 @@ var reset = false;
 var timerID;
 var autoClickExemple = 0;
 var interval = 1000;
+var timerFrance;
+var timerBelgique;
+var timerAllemagne;
+var timerHollande;
+var timerPologne;
+var timerTcheque;
 
 //déclaration couleur
 var $blue = 'rgb(0, 0, 255)';
@@ -148,6 +155,7 @@ function france() {
 
         //on incrémente le compteurs de clicks
         nombreClick++;
+        nombreClickTotal++;
         //on modifie le texte de la div compteur
         $count.html("Click : " + nombreClick);
 
@@ -181,8 +189,11 @@ function france() {
             $france.css("display", "none");
             $drapeauFrance.css("display", "none");
             // belgique();
+            timerFrance = $("#chrono").text();
             console.log("chrono : ", $("#chrono").text());
             console.log("click : ", nombreClick);
+            // afficherFrance();
+            // setInterval(afficherFrance(),3000);
             finlvl();
         }
     });
@@ -192,6 +203,14 @@ function france() {
     });
 
 }
+
+// function afficherFrance (){
+    
+//     var $bleu = $drapeauFrance.children(':nth-child(1)').css("background-color", "blue");
+//     var $blanc = $drapeauFrance.children(':nth-child(2)').css("background-color", "white");
+//     var $rouge = $drapeauFrance.children(':nth-child(3)').css("background-color", "red");
+// }
+
 // ************************* Fin France ***************
 
 // ************************* Début Belgique ***************
@@ -204,7 +223,6 @@ function belgique() {
     $header.css("height", "30%");
     $header.css("flex-direction", "row");
     $chrono.html("00 : 00 : 00");
-    $count.html("Click : 0");
 
     //lvl2
     $lvl.html("Lvl : 2");
@@ -228,7 +246,9 @@ function belgique() {
 
         //on incrémente le compteurs de clicks
         nombreClick++;
-        //on modifie le texte de la div compteurhtml("Click : " + nombreClick);
+        nombreClickTotal++;
+        //on modifie le texte de la div compteur
+        $count.html("Click : " + nombreClick);
 
         var $elem = $(this).css("background-color");
 
@@ -260,6 +280,7 @@ function belgique() {
             $belgique.css("display", "none");
             $drapeauBelge.css("display", "none");
             // allemagne();
+            timerBelgique = $("#chrono").text();
             console.log("chrono : ", $("#chrono").text());
             console.log("click : ", nombreClick);
             finlvl();
@@ -303,7 +324,9 @@ function allemagne() {
 
         //on incrémente le compteurs de clicks
         nombreClick++;
-        //on modifie le texte de la div compteurhtml("Click : " + nombreClick);
+        nombreClickTotal++;
+        //on modifie le texte de la div compteur
+        $count.html("Click : " + nombreClick);
 
         var $elem = $(this).css("background-color");
 
@@ -335,6 +358,7 @@ function allemagne() {
             $allemagne.css("display", "none");
             $drapeauAllemagne.css("display", "none");
             // hollande();
+            timerAllemagne = $("#chrono").text();
             console.log("chrono : ", $("#chrono").text());
             console.log("click : ", nombreClick);
             finlvl();
@@ -378,7 +402,9 @@ function hollande() {
 
         //on incrémente le compteurs de clicks
         nombreClick++;
-        //on modifie le texte de la div compteurhtml("Click : " + nombreClick);
+        nombreClickTotal++;
+        //on modifie le texte de la div compteur
+        $count.html("Click : " + nombreClick);
 
         var $elem = $(this).css("background-color");
 
@@ -410,6 +436,7 @@ function hollande() {
             $hollande.css("display", "none"),
             $drapeauHollande.css("display", "none");
             // pologne();
+            timerHollande = $("#chrono").text();
             console.log("chrono : ", $("#chrono").text());
             console.log("click : ", nombreClick);
             finlvl();
@@ -452,7 +479,9 @@ function pologne() {
 
         //on incrémente le compteurs de clicks
         nombreClick++;
-        //on modifie le texte de la div compteurhtml("Click : " + nombreClick);
+        nombreClickTotal++;
+        //on modifie le texte de la div compteur
+        $count.html("Click : " + nombreClick);
 
         var $elem = $(this).css("background-color");
 
@@ -480,6 +509,7 @@ function pologne() {
             $pologne.css("display", "none"),
             $drapeauPologne.css("display", "none");
             // tcheque();
+            timerPologne = $("#chrono").text();
             console.log("chrono : ", $("#chrono").text());
             console.log("click : ", nombreClick);
             finlvl();
@@ -520,9 +550,20 @@ function tcheque() {
 
         //on incrémente le compteurs de clicks
         nombreClick++;
-        //on modifie le texte de la div compteurhtml("Click : " + nombreClick);
+        nombreClickTotal++;
+        //on modifie le texte de la div compteur
+        $count.html("Click : " + nombreClick);
 
         var $elem = $(this).css("background-color");
+
+        //formule de test
+        var $testTcheque = ($triangleTcheque.css("background-color") == ($blue)) && ($rectangle1.css("background-color") == ($white) && ($rectangle2.css("background-color") == ($red)));
+
+        if ($testTcheque) {
+            $tcheque.css("display", "none"),
+                $drapeauTcheque.css("display", "none");
+            fin();
+        }
 
         switch ($elem) {
             case $blue:
@@ -547,7 +588,17 @@ function tcheque() {
 
         //on incrémente le compteurs de clicks
         nombreClick++;
+        nombreClickTotal++;
         //on modifie le texte de la div compteurhtml("Click : " + nombreClick);
+
+        //formule de test
+        var $testTcheque = ($triangleTcheque.css("background-color") == ($blue)) && ($rectangle1.css("background-color") == ($white) && ($rectangle2.css("background-color") == ($red)));
+
+        if ($testTcheque) {
+            $tcheque.css("display", "none"),
+                $drapeauTcheque.css("display", "none");
+            fin();
+        }
 
         var $elem = $(this).css("background-color");
 
@@ -570,7 +621,6 @@ function tcheque() {
     });
 
     $abandonner.css("display", "flex");
-
     $abandonner.click(function () {
         $abandonner.css("display", "none");
         $tcheque.css("display", "none"),
@@ -578,17 +628,10 @@ function tcheque() {
         fin();
     });
 
-    // //test des couleurs à l'issue du click
-    // $drapeauPologne.children().click(function () {
+    //test des couleurs à l'issue du click
+    // $drapeauTcheque.children().click(function () {
 
-    //     //formule de test
-    //     var $testPologne = ($blanc.css("background-color") == ($white)) && ($rouge.css("background-color") == ($red));
-
-    //     if ($testPologne) {
-    //         $pologne.css("display", "none"),
-    //             $drapeauPologne.css("display", "none");
-    //         fin();
-    //     }
+        
     // });
 }
 // ************************* Fin tcheque ***************
@@ -787,7 +830,6 @@ function fin() {
     });
 }
 
-
 function finlvl() {
     stopChrono();
     $chrono.html($chrono.text());
@@ -799,13 +841,5 @@ function finlvl() {
 
 }
 
-// function finlvl(){
-//     $chrono.html($chrono.text());
-//     resetChrono();
-//     $conteneur.css("display", "none");
-//     $suivant.css("display", "flex");
-//     $header.css("height", "100%");
-//     $header.css("flex-direction", "column");
-// }
 
 
